@@ -4,32 +4,15 @@
 from . import linalg
 from .constants import e, inf, nan, newaxis, pi
 from .creation_functions import (
-    arange,
-    asarray,
-    empty,
     empty_like,
-    eye,
-    from_dlpack,
-    full,
     full_like,
-    linspace,
     meshgrid,
-    ones,
     ones_like,
     tril,
     triu,
-    zeros,
     zeros_like,
 )
-from .data_type_functions import (
-    astype,
-    broadcast_arrays,
-    broadcast_to,
-    can_cast,
-    finfo,
-    iinfo,
-    result_type,
-)
+from .data_type_functions import astype, broadcast_arrays, broadcast_to
 from .elementwise_functions import (
     abs,
     acos,
@@ -123,32 +106,17 @@ __all__ = [
     "nan",
     "newaxis",
     "pi",
-    # creation functions
-    "arange",
-    "asarray",
-    "empty",
     "empty_like",
-    "eye",
-    "full",
     "full_like",
-    "linspace",
     "meshgrid",
-    "ones",
     "ones_like",
     "tril",
     "triu",
-    "zeros",
     "zeros_like",
-    "from_dlpack",
     # data type functions
     "astype",
     "broadcast_arrays",
     "broadcast_to",
-    "can_cast",
-    "finfo",
-    "iinfo",
-    "result_type",
-    # elementwise functions
     "abs",
     "acos",
     "acosh",
