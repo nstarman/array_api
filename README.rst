@@ -5,7 +5,7 @@ Example:
 
 >>> import array_api as ap
 >>> import numpy.array_api as np
-    
+
 >>> x = np.linspace(1, 2, num=5)[:, None]
 >>> x
 Array([[1.  ],
