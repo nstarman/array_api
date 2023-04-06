@@ -35,7 +35,7 @@ repos:
       - id: text-unicode-replacement-char
 
   - repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.1
+    rev: v2.0.2
     hooks:
       - id: autoflake
         args:
@@ -67,7 +67,7 @@ repos:
         additional_dependencies: [toml]
 
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
         additional_dependencies: [toml]
@@ -110,7 +110,7 @@ repos:
         - --match='(?!test_).*\.py'
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v1.0.1'
+    rev: 'v1.1.1'
     hooks:
       - id: mypy
         args:
