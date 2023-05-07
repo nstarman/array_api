@@ -1,21 +1,23 @@
+"""Manipulation functions."""
+
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING
 
-# LOCAL
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI
 
 __all__: list[str] = []
 
 
 def concat(
-    arrays: tuple[ArrayAPIConformant, ...] | list[ArrayAPIConformant], /, *, axis: int | None = 0
-) -> ArrayAPIConformant:
+    arrays: tuple[ArrayAPI, ...] | list[ArrayAPI],
+    /,
+    *,
+    axis: int | None = 0,
+) -> ArrayAPI:
     """
     Joins a sequence of arrays along an existing axis.
 
@@ -46,7 +48,7 @@ def concat(
     return get_namespace(*arrays).concat(arrays, axis=axis)
 
 
-def expand_dims(x: ArrayAPIConformant, /, *, axis: int = 0) -> ArrayAPIConformant:
+def expand_dims(x: ArrayAPI, /, *, axis: int = 0) -> ArrayAPI:
     """
     Expands the shape of an array by inserting a new axis (dimension) of size
     one at the position specified by ``axis``.
@@ -75,7 +77,12 @@ def expand_dims(x: ArrayAPIConformant, /, *, axis: int = 0) -> ArrayAPIConforman
     return get_namespace(x).expand_dims(x, axis=axis)
 
 
-def flip(x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None) -> ArrayAPIConformant:
+def flip(
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int | tuple[int, ...] | None = None,
+) -> ArrayAPI:
     """
     Reverses the order of elements in an array along the given axis. The shape
     of the array must be preserved.
@@ -99,7 +106,7 @@ def flip(x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None)
     return get_namespace(x).flip(x, axis=axis)
 
 
-def permute_dims(x: ArrayAPIConformant, /, axes: tuple[int, ...]) -> ArrayAPIConformant:
+def permute_dims(x: ArrayAPI, /, axes: tuple[int, ...]) -> ArrayAPI:
     """
     Permutes the axes (dimensions) of an array ``x``.
 
@@ -120,7 +127,13 @@ def permute_dims(x: ArrayAPIConformant, /, axes: tuple[int, ...]) -> ArrayAPICon
     return get_namespace(x).permute_dims(x, axes=axes)
 
 
-def reshape(x: ArrayAPIConformant, /, shape: tuple[int, ...], *, copy: bool | None = None) -> ArrayAPIConformant:
+def reshape(
+    x: ArrayAPI,
+    /,
+    shape: tuple[int, ...],
+    *,
+    copy: bool | None = None,
+) -> ArrayAPI:
     """
     Reshapes an array without changing its data.
 
@@ -149,12 +162,12 @@ def reshape(x: ArrayAPIConformant, /, shape: tuple[int, ...], *, copy: bool | No
 
 
 def roll(
-    x: ArrayAPIConformant,
+    x: ArrayAPI,
     /,
     shift: int | tuple[int, ...],
     *,
     axis: int | tuple[int, ...] | None = None,
-) -> ArrayAPIConformant:
+) -> ArrayAPI:
     """
     Rolls array elements along a specified axis. Array elements that roll beyond
     the last position are re-introduced at the first position. Array elements
@@ -188,7 +201,7 @@ def roll(
     return get_namespace(x).roll(x, shift=shift, axis=axis)
 
 
-def squeeze(x: ArrayAPIConformant, /, axis: int | tuple[int, ...]) -> ArrayAPIConformant:
+def squeeze(x: ArrayAPI, /, axis: int | tuple[int, ...]) -> ArrayAPI:
     """
     Removes singleton dimensions (axes) from ``x``.
 
@@ -208,7 +221,12 @@ def squeeze(x: ArrayAPIConformant, /, axis: int | tuple[int, ...]) -> ArrayAPICo
     return get_namespace(x).squeeze(x, axis=axis)
 
 
-def stack(arrays: tuple[ArrayAPIConformant, ...] | list[ArrayAPIConformant], /, *, axis: int = 0) -> ArrayAPIConformant:
+def stack(
+    arrays: tuple[ArrayAPI, ...] | list[ArrayAPI],
+    /,
+    *,
+    axis: int = 0,
+) -> ArrayAPI:
     """
     Joins a sequence of arrays along a new axis.
 

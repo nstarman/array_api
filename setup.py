@@ -1,14 +1,11 @@
-##############################################################################
-# IMPORTS
+"""Setup."""
 
 from __future__ import annotations
 
-# STDLIB
 import os
 import sys
 from pathlib import Path
 
-# THIRD-PARTY
 from mypyc.build import mypycify
 from setuptools import setup
 
@@ -28,8 +25,12 @@ sys.path.insert(0, str(CURRENT_DIR))  # for setuptools.build_meta
 ##############################################################################
 
 
-def find_python_files(base: Path, exclude: tuple[str, ...] = ("test_",)) -> list[Path]:
-    """Recursively find python files in all subfolders of base.
+def find_python_files(
+    base: Path,
+    exclude: tuple[str, ...] = ("test_",),
+) -> list[Path]:
+    """
+    Recursively find python files in all subfolders of base.
 
     Parameters
     ----------
@@ -64,7 +65,7 @@ if not USE_MYPYC:
     ext_modules = []
 
 else:
-    print("BUILDING `array_api` WITH MYPYC")
+    print("BUILDING `array_api` WITH MYPYC")  # noqa: T201
 
     blocklist: list[str] = [
         "array_api/setup_package.py",
@@ -75,7 +76,11 @@ else:
     ]
     discovered: list[Path] = []
     discovered.extend(find_python_files(SRC / "array_api"))
-    mypyc_targets = [str(p) for p in discovered if p.relative_to(SRC).as_posix() not in blocklist]
+    mypyc_targets = [
+        str(p)
+        for p in discovered
+        if p.relative_to(SRC).as_posix() not in blocklist
+    ]
 
     opt_level = os.getenv("MYPYC_OPT_LEVEL", "3")
     ext_modules = mypycify(mypyc_targets, opt_level=opt_level, verbose=True)

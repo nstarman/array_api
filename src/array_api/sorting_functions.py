@@ -1,19 +1,23 @@
-# STDLIB
+"""Sorting functions."""
+
 from typing import TYPE_CHECKING
 
-# LOCAL
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI  # noqa: TCH004
 
 __all__: list[str] = []
 
 
 def argsort(
-    x: ArrayAPIConformant, /, *, axis: int = -1, descending: bool = False, stable: bool = True
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int = -1,
+    descending: bool = False,
+    stable: bool = True,
+) -> ArrayAPI:
     """
     Returns the indices that sort an array ``x`` along a specified axis.
 
@@ -41,12 +45,22 @@ def argsort(
         an array of indices. The returned array must have the same shape as
         ``x``. The returned array must have the default array index data type.
     """
-    return get_namespace(x).argsort(x, axis=axis, descending=descending, stable=stable)
+    return get_namespace(x).argsort(
+        x,
+        axis=axis,
+        descending=descending,
+        stable=stable,
+    )
 
 
 def sort(
-    x: ArrayAPIConformant, /, *, axis: int = -1, descending: bool = False, stable: bool = True
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int = -1,
+    descending: bool = False,
+    stable: bool = True,
+) -> ArrayAPI:
     """
     Returns a sorted copy of an input array ``x``.
 
@@ -74,4 +88,9 @@ def sort(
         a sorted array. The returned array must have the same data type and
         shape as ``x``.
     """
-    return get_namespace(x).sort(x, axis=axis, descending=descending, stable=stable)
+    return get_namespace(x).sort(
+        x,
+        axis=axis,
+        descending=descending,
+        stable=stable,
+    )

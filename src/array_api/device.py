@@ -1,15 +1,14 @@
+"""Device protocol and related types."""
+
 from __future__ import annotations
 
-# STDLIB
-from typing import Protocol, TypeVar, runtime_checkable
+from typing import Protocol, runtime_checkable
 
 __all__: list[str] = []
 
-Device = TypeVar("Device", bound="DeviceConformant")
-
 
 @runtime_checkable
-class DeviceConformant(Protocol):
+class Device(Protocol):
     """Runtime-checkable protocol for the dtype."""
 
     def __eq__(self: Device, other: Device, /) -> bool:

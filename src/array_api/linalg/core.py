@@ -12,12 +12,12 @@ if TYPE_CHECKING:
     from collections.abc import Sequence
 
     # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI
 
 __all__: list[str] = []
 
 
-def cholesky(x: ArrayAPIConformant, /, *, upper: bool = False) -> ArrayAPIConformant:
+def cholesky(x: ArrayAPI, /, *, upper: bool = False) -> ArrayAPI:
     """
     Returns the lower (upper) Cholesky decomposition x = LLᵀ (x = UᵀU) of a
     symmetric positive-definite matrix (or a stack of matrices) ``x``, where
@@ -54,7 +54,7 @@ def cholesky(x: ArrayAPIConformant, /, *, upper: bool = False) -> ArrayAPIConfor
     return get_namespace(x).linalg.cholesky(x, upper=upper)
 
 
-def cross(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axis: int = -1) -> ArrayAPIConformant:
+def cross(x1: ArrayAPI, x2: ArrayAPI, /, *, axis: int = -1) -> ArrayAPI:
     """
     Returns the cross product of 3-element vectors. If ``x1`` and ``x2`` are
     multi-dimensional arrays (i.e., both have a rank greater than ``1``), then
@@ -80,10 +80,10 @@ def cross(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axis: int = -1) 
         an array containing the cross products. The returned array must have a
         data type determined by :ref:`type-promotion`.
     """
-    return get_namespace(x1, x2).linalg.cross(x1, x2)
+    return get_namespace(x1, x2).linalg.cross(x1, x2, axis=axis)
 
 
-def det(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def det(x: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the determinant of a square matrix (or a stack of square matrices)
     ``x``.
@@ -105,7 +105,7 @@ def det(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).linalg.det(x)
 
 
-def diagonal(x: ArrayAPIConformant, /, *, offset: int = 0) -> ArrayAPIConformant:
+def diagonal(x: ArrayAPI, /, *, offset: int = 0) -> ArrayAPI:
     """
     Returns the specified diagonals of a matrix (or a stack of matrices) ``x``.
 
@@ -134,7 +134,7 @@ def diagonal(x: ArrayAPIConformant, /, *, offset: int = 0) -> ArrayAPIConformant
     return get_namespace(x).linalg.diagonal(x, offset=offset)
 
 
-def eigh(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant]:
+def eigh(x: ArrayAPI, /) -> tuple[ArrayAPI]:
     """
     Returns an eigendecomposition x = QLQᵀ of a symmetric matrix (or a stack of
     symmetric matrices) ``x``, where ``Q`` is an orthogonal matrix (or a stack
@@ -183,7 +183,7 @@ def eigh(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant]:
     return get_namespace(x).linalg.eigh(x)
 
 
-def eigvalsh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def eigvalsh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the eigenvalues of a symmetric matrix (or a stack of symmetric
     matrices) ``x``.
@@ -219,7 +219,7 @@ def eigvalsh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).linalg.eigvalsh(x)
 
 
-def inv(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def inv(x: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the multiplicative inverse of a square matrix (or a stack of square
     matrices) ``x``.
@@ -240,18 +240,18 @@ def inv(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).linalg.inv(x)
 
 
-def matmul(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def matmul(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """Alias for :func:`~array_api.linear_algebra_functions.matmul`."""
     return get_namespace(x1, x2).linalg.matmul(x1, x2)
 
 
 def matrix_norm(
-    x: ArrayAPIConformant,
+    x: ArrayAPI,
     /,
     *,
     keepdims: bool = False,
     ord: int | float | Literal["fro", "nuc"] | None = "fro",
-) -> ArrayAPIConformant:
+) -> ArrayAPI:
     """
     Computes the matrix norm of a matrix (or a stack of matrices) ``x``.
 
@@ -318,7 +318,7 @@ def matrix_norm(
     return get_namespace(x).linalg.matrix_norm(x, keepdims=keepdims, ord=ord)
 
 
-def matrix_power(x: ArrayAPIConformant, n: int, /) -> ArrayAPIConformant:
+def matrix_power(x: ArrayAPI, n: int, /) -> ArrayAPI:
     """
     Raises a square matrix (or a stack of square matrices) ``x`` to an integer
     power ``n``.
@@ -345,7 +345,12 @@ def matrix_power(x: ArrayAPIConformant, n: int, /) -> ArrayAPIConformant:
     return get_namespace(x).linalg.matrix_power(x, n)
 
 
-def matrix_rank(x: ArrayAPIConformant, /, *, rtol: float | ArrayAPIConformant | None = None) -> ArrayAPIConformant:
+def matrix_rank(
+    x: ArrayAPI,
+    /,
+    *,
+    rtol: float | ArrayAPI | None = None,
+) -> ArrayAPI:
     """
     Returns the rank (i.e., number of non-zero singular values) of a matrix (or
     a stack of matrices).
@@ -380,14 +385,14 @@ def matrix_rank(x: ArrayAPIConformant, /, *, rtol: float | ArrayAPIConformant | 
     return get_namespace(x).linalg.matrix_rank(x, rtol=rtol)
 
 
-def matrix_transpose(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def matrix_transpose(x: ArrayAPI, /) -> ArrayAPI:
     """
     Alias for :func:`~array_api.linear_algebra_functions.matrix_transpose`.
     """
     return get_namespace(x).linalg.matrix_transpose(x)
 
 
-def outer(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def outer(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the outer product of two vectors ``x1`` and ``x2``.
 
@@ -410,7 +415,7 @@ def outer(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConforma
     return get_namespace(x1, x2).linalg.outer(x1, x2)
 
 
-def pinv(x: ArrayAPIConformant, /, *, rtol: float | ArrayAPIConformant | None = None) -> ArrayAPIConformant:
+def pinv(x: ArrayAPI, /, *, rtol: float | ArrayAPI | None = None) -> ArrayAPI:
     """
     Returns the (Moore-Penrose) pseudo-inverse of a matrix (or a stack of
     matrices) ``x``.
@@ -446,8 +451,11 @@ def pinv(x: ArrayAPIConformant, /, *, rtol: float | ArrayAPIConformant | None = 
 
 
 def qr(
-    x: ArrayAPIConformant, /, *, mode: Literal["reduced", "complete"] = "reduced"
-) -> tuple[ArrayAPIConformant, ArrayAPIConformant]:
+    x: ArrayAPI,
+    /,
+    *,
+    mode: Literal["reduced", "complete"] = "reduced",
+) -> tuple[ArrayAPI, ArrayAPI]:
     """
     Returns the qr decomposition x = QR of a full column rank matrix (or a stack
     of matrices), where ``Q`` is an orthonormal matrix (or a stack of matrices)
@@ -478,7 +486,7 @@ def qr(
 
     Returns
     -------
-    out: tuple[ArrayAPIConformant, ArrayAPIConformant]
+    out: tuple[ArrayAPI, ArrayAPI]
         a namedtuple ``(Q, R)`` whose
 
         -   first element must have the field name ``Q`` and must be an array
@@ -502,7 +510,7 @@ def qr(
     return get_namespace(x).linalg.qr(x, mode=mode)
 
 
-def slogdet(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ArrayAPIConformant]:
+def slogdet(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
     """
     Returns the sign and the natural logarithm of the absolute value of the
     determinant of a square matrix (or a stack of square matrices) ``x``.
@@ -521,7 +529,7 @@ def slogdet(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ArrayAPIConfo
 
     Returns
     -------
-    out: tuple[ArrayAPIConformant, ArrayAPIConformant]
+    out: tuple[ArrayAPI, ArrayAPI]
         a namedtuple (``sign``, ``logabsdet``) whose
 
         -   first element must have the field name ``sign`` and must be an array
@@ -548,7 +556,7 @@ def slogdet(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ArrayAPIConfo
     return get_namespace(x).linalg.slogdet(x)
 
 
-def solve(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def solve(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the solution to the system of linear equations represented by the
     well-determined (i.e., full rank) linear matrix equation ``AX = B``.
@@ -584,7 +592,12 @@ def solve(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConforma
     return get_namespace(x1, x2).linalg.solve(x1, x2)
 
 
-def svd(x: ArrayAPIConformant, /, *, full_matrices: bool = True) -> ArrayAPIConformant | tuple[ArrayAPIConformant, ...]:
+def svd(
+    x: ArrayAPI,
+    /,
+    *,
+    full_matrices: bool = True,
+) -> ArrayAPI | tuple[ArrayAPI, ...]:
     """
     Returns a singular value decomposition A = USVh of a matrix (or a stack of
     matrices) ``x``, where ``U`` is a matrix (or a stack of matrices) with
@@ -640,7 +653,7 @@ def svd(x: ArrayAPIConformant, /, *, full_matrices: bool = True) -> ArrayAPIConf
     return get_namespace(x).linalg.svd(x, full_matrices=full_matrices)
 
 
-def svdvals(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def svdvals(x: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the singular values of a matrix (or a stack of matrices) ``x``.
 
@@ -666,13 +679,17 @@ def svdvals(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
 
 
 def tensordot(
-    x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axes: int | tuple[Sequence[int], Sequence[int]] = 2
-) -> ArrayAPIConformant:
+    x1: ArrayAPI,
+    x2: ArrayAPI,
+    /,
+    *,
+    axes: int | tuple[Sequence[int], Sequence[int]] = 2,
+) -> ArrayAPI:
     """Alias for :func:`~array_api.linear_algebra_functions.tensordot`."""
     return get_namespace(x1, x2).linalg.tensordot(x1, x2, axes=axes)
 
 
-def trace(x: ArrayAPIConformant, /, *, offset: int = 0) -> ArrayAPIConformant:
+def trace(x: ArrayAPI, /, *, offset: int = 0) -> ArrayAPI:
     """
     Returns the sum along the specified diagonals of a matrix (or a stack of
     matrices) ``x``.
@@ -709,22 +726,20 @@ def trace(x: ArrayAPIConformant, /, *, offset: int = 0) -> ArrayAPIConformant:
     return get_namespace(x).linalg.trace(x, offset=offset)
 
 
-def vecdot(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axis: int = -1) -> ArrayAPIConformant:
-    """
-    Alias for :func:`~array_api.linear_algebra_functions.vecdot`.
-    """
+def vecdot(x1: ArrayAPI, x2: ArrayAPI, /, *, axis: int = -1) -> ArrayAPI:
+    """Alias for :func:`~array_api.linear_algebra_functions.vecdot`."""
     xp = get_namespace(x1, x2)
     return xp.linalg.vecdot(x1, x2, axis=axis)
 
 
 def vector_norm(
-    x: ArrayAPIConformant,
+    x: ArrayAPI,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
     ord: int | float = 2,
-) -> ArrayAPIConformant:
+) -> ArrayAPI:
     r"""
     Computes the vector norm of a vector (or batch of vectors) ``x``.
 
@@ -790,4 +805,9 @@ def vector_norm(
         ``n`` less than the rank of ``x``. The returned array must have a
         floating-point data type determined by :ref:`type-promotion`.
     """
-    return get_namespace(x).linalg.vector_norm(x, axis=axis, keepdims=keepdims, ord=ord)
+    return get_namespace(x).linalg.vector_norm(
+        x,
+        axis=axis,
+        keepdims=keepdims,
+        ord=ord,
+    )

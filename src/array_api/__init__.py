@@ -1,6 +1,33 @@
 """Array API dispatching implementation."""
 
-# LOCAL
+
+from array_api.linear_algebra_functions import (
+    matmul,
+    matrix_transpose,
+    tensordot,
+    vecdot,
+)
+from array_api.manipulation_functions import (
+    concat,
+    expand_dims,
+    flip,
+    permute_dims,
+    reshape,
+    roll,
+    squeeze,
+    stack,
+)
+from array_api.searching_functions import argmax, argmin, nonzero
+from array_api.set_functions import (
+    unique_all,
+    unique_counts,
+    unique_inverse,
+    unique_values,
+)
+from array_api.sorting_functions import argsort, sort
+from array_api.statistical_functions import max, mean, min, prod, std, sum, var
+from array_api.utility_functions import all, any
+
 from . import linalg
 from .constants import e, inf, nan, newaxis, pi
 from .creation_functions import (
@@ -71,32 +98,6 @@ from .elementwise_functions import (
     tanh,
     trunc,
 )
-from array_api.linear_algebra_functions import (
-    matmul,
-    matrix_transpose,
-    tensordot,
-    vecdot,
-)
-from array_api.manipulation_functions import (
-    concat,
-    expand_dims,
-    flip,
-    permute_dims,
-    reshape,
-    roll,
-    squeeze,
-    stack,
-)
-from array_api.searching_functions import argmax, argmin, nonzero
-from array_api.set_functions import (
-    unique_all,
-    unique_counts,
-    unique_inverse,
-    unique_values,
-)
-from array_api.sorting_functions import argsort, sort
-from array_api.statistical_functions import max, mean, min, prod, std, sum, var
-from array_api.utility_functions import all, any
 
 __all__ = [
     "linalg",

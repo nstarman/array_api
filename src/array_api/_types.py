@@ -6,17 +6,14 @@ library, e.g., for NumPy TypeVar('array') would be replaced with ndarray.
 """
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING, Any, Protocol, TypeVar
 
 if TYPE_CHECKING:
-    # STDLIB
     from collections.abc import Sequence
 
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
-    from array_api.device import DeviceConformant
-    from array_api.dtype import DTypeConformant
+    from array_api.array import ArrayAPI
+    from array_api.device import Device
+    from array_api.dtype import DType
     from array_api.linalg._types import ArrayAPILinAlgNamespace
 
 SupportsBufferProtocol = Any
@@ -24,8 +21,8 @@ PyCapsule = Any
 _T_co = TypeVar("_T_co", covariant=True)
 
 
-class finfo_object(Protocol):
-    """object returned by finfo"""
+class finfo_object(Protocol):  # noqa: N801
+    """object returned by finfo."""
 
     bits: int
     eps: float
@@ -34,7 +31,7 @@ class finfo_object(Protocol):
     smallest_normal: float
 
 
-class iinfo_object(Protocol):
+class iinfo_object(Protocol):  # noqa: N801
     """object returned by iinfo."""
 
     bits: int
@@ -88,26 +85,35 @@ class ArrayAPINamespace(Protocol):
         stop: int | float | None = None,
         step: int | float = 1,
         *,
-        dtype: DTypeConformant | None = None,
-        device: DeviceConformant | None = None,
-    ) -> ArrayAPIConformant:
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def asarray(
-        obj: ArrayAPIConformant | bool | int | float | NestedSequence[bool | int | float] | SupportsBufferProtocol,
+        obj: ArrayAPI
+        | bool
+        | int
+        | float
+        | NestedSequence[bool | int | float]
+        | SupportsBufferProtocol,
         /,
         *,
-        dtype: DTypeConformant | None = None,
-        device: DeviceConformant | None = None,
+        dtype: DType | None = None,
+        device: Device | None = None,
         copy: bool | None = None,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def empty_like(
-        x: ArrayAPIConformant, /, *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
@@ -117,13 +123,13 @@ class ArrayAPINamespace(Protocol):
         /,
         *,
         k: int = 0,
-        dtype: DTypeConformant | None = None,
-        device: DeviceConformant | None = None,
-    ) -> ArrayAPIConformant:
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def from_dlpack(x: object, /) -> ArrayAPIConformant:
+    def from_dlpack(x: object, /) -> ArrayAPI:
         ...
 
     @staticmethod
@@ -131,20 +137,20 @@ class ArrayAPINamespace(Protocol):
         shape: int | tuple[int, ...],
         fill_value: int | float,
         *,
-        dtype: DTypeConformant | None = None,
-        device: DeviceConformant | None = None,
-    ) -> ArrayAPIConformant:
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def full_like(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         fill_value: int | float,
         *,
-        dtype: DTypeConformant | None = None,
-        device: DeviceConformant | None = None,
-    ) -> ArrayAPIConformant:
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
@@ -154,304 +160,318 @@ class ArrayAPINamespace(Protocol):
         /,
         num: int,
         *,
-        dtype: DTypeConformant | None = None,
-        device: DeviceConformant | None = None,
+        dtype: DType | None = None,
+        device: Device | None = None,
         endpoint: bool = True,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def meshgrid(*arrays: ArrayAPIConformant, indexing: str = "xy") -> list[ArrayAPIConformant]:
+    def meshgrid(*arrays: ArrayAPI, indexing: str = "xy") -> list[ArrayAPI]:
         ...
 
     @staticmethod
     def ones(
-        shape: int | tuple[int, ...], *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-    ) -> ArrayAPIConformant:
+        shape: int | tuple[int, ...],
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def ones_like(
-        x: ArrayAPIConformant, /, *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def tril(x: ArrayAPIConformant, /, *, k: int = 0) -> ArrayAPIConformant:
+    def tril(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
         ...
 
     @staticmethod
-    def triu(x: ArrayAPIConformant, /, *, k: int = 0) -> ArrayAPIConformant:
+    def triu(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
         ...
 
     @staticmethod
     def zeros(
-        shape: int | tuple[int, ...], *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-    ) -> ArrayAPIConformant:
+        shape: int | tuple[int, ...],
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def zeros_like(
-        x: ArrayAPIConformant, /, *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> ArrayAPI:
         ...
 
     # ===============================================================
     # Data Type Functions
 
     @staticmethod
-    def astype(x: ArrayAPIConformant, dtype: DTypeConformant, /, *, copy: bool = True) -> ArrayAPIConformant:
+    def astype(x: ArrayAPI, dtype: DType, /, *, copy: bool = True) -> ArrayAPI:
         ...
 
     @staticmethod
-    def broadcast_arrays(*arrays: ArrayAPIConformant) -> list[ArrayAPIConformant]:
+    def broadcast_arrays(*arrays: ArrayAPI) -> list[ArrayAPI]:
         ...
 
     @staticmethod
-    def broadcast_to(x: ArrayAPIConformant, /, shape: tuple[int, ...]) -> ArrayAPIConformant:
+    def broadcast_to(x: ArrayAPI, /, shape: tuple[int, ...]) -> ArrayAPI:
         ...
 
     @staticmethod
-    def can_cast(from_: DTypeConformant | ArrayAPIConformant, to: DTypeConformant, /) -> bool:
+    def can_cast(from_: DType | ArrayAPI, to: DType, /) -> bool:
         ...
 
     @staticmethod
-    def finfo(type: DTypeConformant | ArrayAPIConformant, /) -> finfo_object:
+    def finfo(type: DType | ArrayAPI, /) -> finfo_object:
         ...
 
     @staticmethod
-    def iinfo(type: DTypeConformant | ArrayAPIConformant, /) -> iinfo_object:
+    def iinfo(type: DType | ArrayAPI, /) -> iinfo_object:
         ...
 
     @staticmethod
-    def result_type(*arrays_and_dtypes: ArrayAPIConformant | DTypeConformant) -> DTypeConformant:
+    def result_type(*arrays_and_dtypes: ArrayAPI | DType) -> DType:
         ...
 
     # ===============================================================
     # Elementwise Functions
 
     @staticmethod
-    def abs(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def abs(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def acos(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def acos(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def acosh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def acosh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def add(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def add(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def asin(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def asin(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def asinh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def asinh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def atan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def atan(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def atan2(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def atan2(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def atanh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def atanh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def bitwise_and(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def bitwise_and(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def bitwise_left_shift(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def bitwise_left_shift(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def bitwise_invert(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def bitwise_invert(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def bitwise_or(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def bitwise_or(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def bitwise_right_shift(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def bitwise_right_shift(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def bitwise_xor(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def bitwise_xor(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def ceil(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def ceil(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def cos(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def cos(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def cosh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def cosh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def divide(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def divide(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def exp(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def exp(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def expm1(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def expm1(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def floor(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def floor(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def floor_divide(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def floor_divide(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def greater(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def greater(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def greater_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def greater_equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def isfinite(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def isfinite(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def isinf(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def isinf(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def isnan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def isnan(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def less(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def less(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def less_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def less_equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def log(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def log(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def log1p(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def log1p(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def log2(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def log2(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def log10(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def log10(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def logaddexp(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def logaddexp(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def logical_and(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def logical_and(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def logical_not(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def logical_not(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def logical_or(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def logical_or(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def logical_xor(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def logical_xor(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def multiply(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def multiply(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def negative(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def negative(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def not_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def not_equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def positive(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def positive(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def pow(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def pow(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def remainder(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def remainder(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def round(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def round(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def sign(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def sign(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def sin(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def sin(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def sinh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def sinh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def square(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def square(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def sqrt(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def sqrt(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def subtract(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def subtract(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def tan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def tan(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def tanh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def tanh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def trunc(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def trunc(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     # ===============================================================
@@ -462,21 +482,25 @@ class ArrayAPINamespace(Protocol):
         ...
 
     @staticmethod
-    def matmul(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def matmul(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def matrix_transpose(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def matrix_transpose(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
     def tensordot(
-        x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axes: int | tuple[Sequence[int], Sequence[int]] = 2
-    ) -> ArrayAPIConformant:
+        x1: ArrayAPI,
+        x2: ArrayAPI,
+        /,
+        *,
+        axes: int | tuple[Sequence[int], Sequence[int]] = 2,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def vecdot(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axis: int = -1) -> ArrayAPIConformant:
+    def vecdot(x1: ArrayAPI, x2: ArrayAPI, /, *, axis: int = -1) -> ArrayAPI:
         ...
 
     # ===============================================================
@@ -484,59 +508,92 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def concat(
-        arrays: tuple[ArrayAPIConformant, ...] | list[ArrayAPIConformant], /, *, axis: int | None = 0
-    ) -> ArrayAPIConformant:
+        arrays: tuple[ArrayAPI, ...] | list[ArrayAPI],
+        /,
+        *,
+        axis: int | None = 0,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def expand_dims(x: ArrayAPIConformant, /, *, axis: int = 0) -> ArrayAPIConformant:
+    def expand_dims(x: ArrayAPI, /, *, axis: int = 0) -> ArrayAPI:
         ...
 
     @staticmethod
-    def flip(x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None) -> ArrayAPIConformant:
+    def flip(
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | tuple[int, ...] | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def permute_dims(x: ArrayAPIConformant, /, axes: tuple[int, ...]) -> ArrayAPIConformant:
+    def permute_dims(x: ArrayAPI, /, axes: tuple[int, ...]) -> ArrayAPI:
         ...
 
     @staticmethod
-    def reshape(x: ArrayAPIConformant, /, shape: tuple[int, ...], *, copy: bool | None = None) -> ArrayAPIConformant:
+    def reshape(
+        x: ArrayAPI,
+        /,
+        shape: tuple[int, ...],
+        *,
+        copy: bool | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def roll(
-        x: ArrayAPIConformant, /, shift: int | tuple[int, ...], *, axis: int | tuple[int, ...] | None = None
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        shift: int | tuple[int, ...],
+        *,
+        axis: int | tuple[int, ...] | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def squeeze(x: ArrayAPIConformant, /, axis: int | tuple[int, ...]) -> ArrayAPIConformant:
+    def squeeze(x: ArrayAPI, /, axis: int | tuple[int, ...]) -> ArrayAPI:
         ...
 
     @staticmethod
     def stack(
-        arrays: tuple[ArrayAPIConformant, ...] | list[ArrayAPIConformant], /, *, axis: int = 0
-    ) -> ArrayAPIConformant:
+        arrays: tuple[ArrayAPI, ...] | list[ArrayAPI],
+        /,
+        *,
+        axis: int = 0,
+    ) -> ArrayAPI:
         ...
 
     # ===============================================================
     # Searching
 
     @staticmethod
-    def argmax(x: ArrayAPIConformant, /, *, axis: int | None = None, keepdims: bool = False) -> ArrayAPIConformant:
+    def argmax(
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def argmin(x: ArrayAPIConformant, /, *, axis: int | None = None, keepdims: bool = False) -> ArrayAPIConformant:
+    def argmin(
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def nonzero(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ...]:
+    def nonzero(x: ArrayAPI, /) -> tuple[ArrayAPI, ...]:
         ...
 
     @staticmethod
-    def where(condition: ArrayAPIConformant, x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def where(condition: ArrayAPI, x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     # ===============================================================
@@ -544,20 +601,21 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def unique_all(
-        x: ArrayAPIConformant, /
-    ) -> tuple[ArrayAPIConformant, ArrayAPIConformant, ArrayAPIConformant, ArrayAPIConformant]:
+        x: ArrayAPI,
+        /,
+    ) -> tuple[ArrayAPI, ArrayAPI, ArrayAPI, ArrayAPI]:
         ...
 
     @staticmethod
-    def unique_counts(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ArrayAPIConformant]:
+    def unique_counts(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
         ...
 
     @staticmethod
-    def unique_inverse(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ArrayAPIConformant]:
+    def unique_inverse(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
         ...
 
     @staticmethod
-    def unique_values(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def unique_values(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     # ===============================================================
@@ -565,14 +623,24 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def argsort(
-        x: ArrayAPIConformant, /, *, axis: int = -1, descending: bool = False, stable: bool = True
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int = -1,
+        descending: bool = False,
+        stable: bool = True,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def sort(
-        x: ArrayAPIConformant, /, *, axis: int = -1, descending: bool = False, stable: bool = True
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int = -1,
+        descending: bool = False,
+        stable: bool = True,
+    ) -> ArrayAPI:
         ...
 
     # ===============================================================
@@ -580,64 +648,76 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def max(
-        x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | tuple[int, ...] | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def mean(
-        x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | tuple[int, ...] | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def min(
-        x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | tuple[int, ...] | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def prod(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
-        dtype: DTypeConformant | None = None,
+        dtype: DType | None = None,
         keepdims: bool = False,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def std(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
         correction: int | float = 0.0,
         keepdims: bool = False,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def sum(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
-        dtype: DTypeConformant | None = None,
+        dtype: DType | None = None,
         keepdims: bool = False,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def var(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
         correction: int | float = 0.0,
         keepdims: bool = False,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     # ===============================================================
@@ -645,12 +725,20 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def all(
-        x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | tuple[int, ...] | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def any(
-        x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-    ) -> ArrayAPIConformant:
+        x: ArrayAPI,
+        /,
+        *,
+        axis: int | tuple[int, ...] | None = None,
+        keepdims: bool = False,
+    ) -> ArrayAPI:
         ...

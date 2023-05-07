@@ -397,3 +397,4 @@ dmypy.json
 
 # Mac stuff
 .DS_Store
+/Discussion.md

@@ -1,19 +1,24 @@
+"""Searching functions."""
+
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING
 
-# LOCAL
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI
 
 __all__: list[str] = []
 
 
-def argmax(x: ArrayAPIConformant, /, *, axis: int | None = None, keepdims: bool = False) -> ArrayAPIConformant:
+def argmax(
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int | None = None,
+    keepdims: bool = False,
+) -> ArrayAPI:
     """
     Returns the indices of the maximum values along a specified axis. When
     the maximum value occurs multiple times, only the indices corresponding
@@ -46,7 +51,13 @@ def argmax(x: ArrayAPIConformant, /, *, axis: int | None = None, keepdims: bool 
     return get_namespace(x).argmax(x, axis=axis, keepdims=keepdims)
 
 
-def argmin(x: ArrayAPIConformant, /, *, axis: int | None = None, keepdims: bool = False) -> ArrayAPIConformant:
+def argmin(
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int | None = None,
+    keepdims: bool = False,
+) -> ArrayAPI:
     """
     Returns the indices of the minimum values along a specified axis. When
     the minimum value occurs multiple times, only the indices corresponding
@@ -79,7 +90,7 @@ def argmin(x: ArrayAPIConformant, /, *, axis: int | None = None, keepdims: bool 
     return get_namespace(x).argmin(x, axis=axis, keepdims=keepdims)
 
 
-def nonzero(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ...]:
+def nonzero(x: ArrayAPI, /) -> tuple[ArrayAPI, ...]:
     """
     Returns the indices of the array elements which are non-zero.
 
@@ -111,7 +122,7 @@ def nonzero(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ...]:
     return get_namespace(x).nonzero(x)
 
 
-def where(condition: ArrayAPIConformant, x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def where(condition: ArrayAPI, x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Returns elements chosen from ``x1`` or ``x2`` depending on
     ``condition``.

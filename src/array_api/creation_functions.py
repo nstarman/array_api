@@ -1,23 +1,26 @@
+"""Creation functions."""
+
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING
 
-# LOCAL
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
-    from array_api.device import DeviceConformant
-    from array_api.dtype import DTypeConformant
+    from array_api.array import ArrayAPI
+    from array_api.device import Device
+    from array_api.dtype import DType
 
 __all__: list[str] = []
 
 
 def empty_like(
-    x: ArrayAPIConformant, /, *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    dtype: DType | None = None,
+    device: Device | None = None,
+) -> ArrayAPI:
     """
     Returns an uninitialized array with the same ``shape`` as an input array
     ``x``.
@@ -43,13 +46,13 @@ def empty_like(
 
 
 def full_like(
-    x: ArrayAPIConformant,
+    x: ArrayAPI,
     /,
     fill_value: int | float,
     *,
-    dtype: DTypeConformant | None = None,
-    device: DeviceConformant | None = None,
-) -> ArrayAPIConformant:
+    dtype: DType | None = None,
+    device: Device | None = None,
+) -> ArrayAPI:
     """
     Returns a new array filled with ``fill_value`` and having the same ``shape``
     as an input array ``x``.
@@ -87,10 +90,15 @@ def full_like(
         an array having the same shape as ``x`` and where every element is equal
         to ``fill_value``.
     """
-    return get_namespace(x).full_like(x, fill_value=fill_value, dtype=dtype, device=device)
+    return get_namespace(x).full_like(
+        x,
+        fill_value=fill_value,
+        dtype=dtype,
+        device=device,
+    )
 
 
-def meshgrid(*arrays: ArrayAPIConformant, indexing: str = "xy") -> list[ArrayAPIConformant]:
+def meshgrid(*arrays: ArrayAPI, indexing: str = "xy") -> list[ArrayAPI]:
     """
     Returns coordinate matrices from coordinate vectors.
 
@@ -133,8 +141,12 @@ def meshgrid(*arrays: ArrayAPIConformant, indexing: str = "xy") -> list[ArrayAPI
 
 
 def ones_like(
-    x: ArrayAPIConformant, /, *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    dtype: DType | None = None,
+    device: Device | None = None,
+) -> ArrayAPI:
     """
     Returns a new array filled with ones and having the same ``shape`` as an
     input array ``x``.
@@ -158,7 +170,7 @@ def ones_like(
     return get_namespace(x).ones_like(x, dtype=dtype, device=device)
 
 
-def tril(x: ArrayAPIConformant, /, *, k: int = 0) -> ArrayAPIConformant:
+def tril(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
     """
     Returns the lower triangular part of a matrix (or a stack of matrices)
     ``x``.
@@ -194,7 +206,7 @@ def tril(x: ArrayAPIConformant, /, *, k: int = 0) -> ArrayAPIConformant:
     return get_namespace(x).tril(x, k=k)
 
 
-def triu(x: ArrayAPIConformant, /, *, k: int = 0) -> ArrayAPIConformant:
+def triu(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
     """
     Returns the upper triangular part of a matrix (or a stack of matrices)
     ``x``.
@@ -231,8 +243,12 @@ def triu(x: ArrayAPIConformant, /, *, k: int = 0) -> ArrayAPIConformant:
 
 
 def zeros_like(
-    x: ArrayAPIConformant, /, *, dtype: DTypeConformant | None = None, device: DeviceConformant | None = None
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    dtype: DType | None = None,
+    device: Device | None = None,
+) -> ArrayAPI:
     """
     Returns a new array filled with zeros and having the same ``shape`` as an
     input array ``x``.

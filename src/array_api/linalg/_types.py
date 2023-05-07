@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from collections.abc import Sequence
 
     # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI
 
 __all__: list[str] = []
 
@@ -17,112 +17,132 @@ class ArrayAPILinAlgNamespace(Protocol):
     """Runtime-checkable protocol for linear algebra namespace."""
 
     @staticmethod
-    def cholesky(x: ArrayAPIConformant, /, *, upper: bool = False) -> ArrayAPIConformant:
+    def cholesky(x: ArrayAPI, /, *, upper: bool = False) -> ArrayAPI:
         ...
 
     @staticmethod
-    def cross(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axis: int = -1) -> ArrayAPIConformant:
+    def cross(x1: ArrayAPI, x2: ArrayAPI, /, *, axis: int = -1) -> ArrayAPI:
         ...
 
     @staticmethod
-    def det(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def det(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def diagonal(x: ArrayAPIConformant, /, *, offset: int = 0) -> ArrayAPIConformant:
+    def diagonal(x: ArrayAPI, /, *, offset: int = 0) -> ArrayAPI:
         ...
 
     @staticmethod
-    def eigh(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant]:
+    def eigh(x: ArrayAPI, /) -> tuple[ArrayAPI]:
         ...
 
     @staticmethod
-    def eigvalsh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def eigvalsh(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def inv(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def inv(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def matmul(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def matmul(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
     def matrix_norm(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         *,
         keepdims: bool = False,
         ord: int | float | Literal["fro", "nuc"] | None = "fro",
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def matrix_power(x: ArrayAPIConformant, n: int, /) -> ArrayAPIConformant:
+    def matrix_power(x: ArrayAPI, n: int, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def matrix_rank(x: ArrayAPIConformant, /, *, rtol: float | ArrayAPIConformant | None = None) -> ArrayAPIConformant:
+    def matrix_rank(
+        x: ArrayAPI,
+        /,
+        *,
+        rtol: float | ArrayAPI | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def matrix_transpose(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def matrix_transpose(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def outer(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def outer(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
-    def pinv(x: ArrayAPIConformant, /, *, rtol: float | ArrayAPIConformant | None = None) -> ArrayAPIConformant:
+    def pinv(
+        x: ArrayAPI,
+        /,
+        *,
+        rtol: float | ArrayAPI | None = None,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
     def qr(
-        x: ArrayAPIConformant, /, *, mode: Literal["reduced", "complete"] = "reduced"
-    ) -> tuple[ArrayAPIConformant, ArrayAPIConformant]:
+        x: ArrayAPI,
+        /,
+        *,
+        mode: Literal["reduced", "complete"] = "reduced",
+    ) -> tuple[ArrayAPI, ArrayAPI]:
         ...
 
     @staticmethod
-    def slogdet(x: ArrayAPIConformant, /) -> tuple[ArrayAPIConformant, ArrayAPIConformant]:
+    def slogdet(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
         ...
 
     @staticmethod
-    def solve(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def solve(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
     def svd(
-        x: ArrayAPIConformant, /, *, full_matrices: bool = True
-    ) -> ArrayAPIConformant | tuple[ArrayAPIConformant, ...]:
+        x: ArrayAPI,
+        /,
+        *,
+        full_matrices: bool = True,
+    ) -> ArrayAPI | tuple[ArrayAPI, ...]:
         ...
 
     @staticmethod
-    def svdvals(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+    def svdvals(x: ArrayAPI, /) -> ArrayAPI:
         ...
 
     @staticmethod
     def tensordot(
-        x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axes: int | tuple[Sequence[int], Sequence[int]] = 2
-    ) -> ArrayAPIConformant:
+        x1: ArrayAPI,
+        x2: ArrayAPI,
+        /,
+        *,
+        axes: int | tuple[Sequence[int], Sequence[int]] = 2,
+    ) -> ArrayAPI:
         ...
 
     @staticmethod
-    def trace(x: ArrayAPIConformant, /, *, offset: int = 0) -> ArrayAPIConformant:
+    def trace(x: ArrayAPI, /, *, offset: int = 0) -> ArrayAPI:
         ...
 
     @staticmethod
-    def vecdot(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /, *, axis: int = -1) -> ArrayAPIConformant:
+    def vecdot(x1: ArrayAPI, x2: ArrayAPI, /, *, axis: int = -1) -> ArrayAPI:
         ...
 
     @staticmethod
     def vector_norm(
-        x: ArrayAPIConformant,
+        x: ArrayAPI,
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
         keepdims: bool = False,
         ord: int | float = 2,
-    ) -> ArrayAPIConformant:
+    ) -> ArrayAPI:
         ...

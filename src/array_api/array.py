@@ -1,31 +1,30 @@
+"""Arra API protocol."""
+
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING, Any, Protocol, TypeVar, runtime_checkable
 
 if TYPE_CHECKING:
-    # STDLIB
     from enum import Enum
     from types import EllipsisType
 
-    # LOCAL
     from array_api._types import ArrayAPINamespace, PyCapsule
-    from array_api.device import DeviceConformant
-    from array_api.dtype import DTypeConformant
+    from array_api.device import Device
+    from array_api.dtype import DType
 
 
 __all__: list[str] = []
 
 
-Self = TypeVar("Self", bound="ArrayAPIConformant")
+Self = TypeVar("Self", bound="ArrayAPI")
 
 
 @runtime_checkable
-class ArrayAPIConformant(Protocol):
+class ArrayAPI(Protocol):
     """Runtime checkable protocol for conformance with the array API."""
 
     @property
-    def dtype(self) -> DTypeConformant:
+    def dtype(self) -> DType:
         """
         Data type of the array elements.
 
@@ -37,7 +36,7 @@ class ArrayAPIConformant(Protocol):
         ...
 
     @property
-    def device(self) -> DeviceConformant:
+    def device(self) -> Device:
         """
         Hardware device the array data resides on.
 
@@ -49,7 +48,7 @@ class ArrayAPIConformant(Protocol):
         ...
 
     @property
-    def mT(self: Self) -> Self:
+    def mT(self: Self) -> Self:  # noqa: N802
         """
         Transpose of a matrix (or a stack of matrices).
 
@@ -132,7 +131,7 @@ class ArrayAPIConformant(Protocol):
         ...
 
     @property
-    def T(self: Self) -> Self:
+    def T(self: Self) -> Self:  # noqa: N802
         """
         Transpose of the array.
 
@@ -246,7 +245,8 @@ class ArrayAPIConformant(Protocol):
 
         .. note::
 
-           Floating-point addition is a commutative operation, but not always associative.
+           Floating-point addition is a commutative operation, but not always
+           associative.
 
         Parameters
         ----------
@@ -298,7 +298,12 @@ class ArrayAPIConformant(Protocol):
         """
         ...
 
-    def __array_namespace__(self, /, *, api_version: str | None = None) -> ArrayAPINamespace:
+    def __array_namespace__(
+        self,
+        /,
+        *,
+        api_version: str | None = None,
+    ) -> ArrayAPINamespace:
         """
         Returns an object that has all the array API functions on it.
 
@@ -372,7 +377,8 @@ class ArrayAPIConformant(Protocol):
 
         .. note::
 
-            Support for a ``stream`` value other than ``None`` is optional and implementation-dependent.
+            Support for a ``stream`` value other than ``None`` is optional and
+            implementation-dependent.
 
 
         Device-specific notes:
@@ -440,7 +446,7 @@ class ArrayAPIConformant(Protocol):
         """
         ...
 
-    def __eq__(self: Self, other: object, /) -> Self:  # type: ignore
+    def __eq__(self: Self, other: object, /) -> Self:  # type: ignore[override]
         """
         Computes the truth value of ``self_i == other_i`` for each element of an
         array instance with the respective element of the array ``other``.
@@ -644,7 +650,13 @@ class ArrayAPIConformant(Protocol):
         ...
 
     def __getitem__(
-        self: Self, key: int | slice | EllipsisType | tuple[int | slice | EllipsisType, ...] | Self, /
+        self: Self,
+        key: int
+        | slice
+        | EllipsisType
+        | tuple[int | slice | EllipsisType, ...]
+        | Self,
+        /,
     ) -> Self:
         """
         Returns ``self[key]``.
@@ -653,8 +665,7 @@ class ArrayAPIConformant(Protocol):
         ----------
         self : array
             array instance.
-        key: Union[int, slice, ellipsis, Tuple[Union[int, slice, ellipsis],
-        ...], array]
+        key: int | slice | ellipsis, Tuple[int | slice | ellipsis, ...], array]
             index key.
 
         Returns
@@ -1105,7 +1116,7 @@ class ArrayAPIConformant(Protocol):
         """
         ...
 
-    def __ne__(self: Self, other: object, /) -> Self:  # type: ignore
+    def __ne__(self: Self, other: object, /) -> Self:  # type: ignore[override]
         """
         Computes the truth value of ``self_i != other_i`` for each element of an
         array instance with the respective element of the array ``other``.
@@ -1344,7 +1355,11 @@ class ArrayAPIConformant(Protocol):
 
     def __setitem__(
         self: Self,
-        key: int | slice | EllipsisType | tuple[int | slice | EllipsisType, ...] | ArrayAPIConformant,
+        key: int
+        | slice
+        | EllipsisType
+        | tuple[int | slice | EllipsisType, ...]
+        | ArrayAPI,
         value: int | float | bool | Self,
         /,
     ) -> None:
@@ -1355,10 +1370,9 @@ class ArrayAPIConformant(Protocol):
         ----------
         self : array
             array instance.
-        key: Union[int, slice, ellipsis, Tuple[Union[int, slice, ellipsis],
-        ...], array]
+        key: int | slice | ellipsis, Tuple[int | slice | ellipsis, ...], array]
             index key.
-        value: Union[int, float, bool, array]
+        value: int | float | bool | array
             value(s) to set. Must be compatible with ``self[key]`` (see
             :ref:`broadcasting`).
 
@@ -1532,7 +1546,13 @@ class ArrayAPIConformant(Protocol):
         """
         ...
 
-    def to_device(self: Self, device: DeviceConformant, /, *, stream: int | Any | None = None) -> Self:
+    def to_device(
+        self: Self,
+        device: Device,
+        /,
+        *,
+        stream: int | Any | None = None,
+    ) -> Self:
         """
         Copy the array from the device on which it currently resides to the
         specified ``device``.

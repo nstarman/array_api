@@ -1,19 +1,22 @@
-# STDLIB
+"""Utility functions."""
+
 from typing import TYPE_CHECKING
 
-# LOCAL
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI  # noqa: TCH004
 
 __all__: list[str] = []
 
 
 def all(
-    x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int | tuple[int, ...] | None = None,
+    keepdims: bool = False,
+) -> ArrayAPI:
     """
     Tests whether all input array elements evaluate to ``True`` along a
     specified axis.
@@ -62,8 +65,12 @@ def all(
 
 
 def any(
-    x: ArrayAPIConformant, /, *, axis: int | tuple[int, ...] | None = None, keepdims: bool = False
-) -> ArrayAPIConformant:
+    x: ArrayAPI,
+    /,
+    *,
+    axis: int | tuple[int, ...] | None = None,
+    keepdims: bool = False,
+) -> ArrayAPI:
     """
     Tests whether any input array element evaluates to ``True`` along a
     specified axis.

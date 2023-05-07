@@ -1,19 +1,18 @@
+"""Elementwise functions."""
+
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING
 
-# LOCAL
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    # LOCAL
-    from array_api.array import ArrayAPIConformant
+    from array_api.array import ArrayAPI
 
 __all__: list[str] = []
 
 
-def abs(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def abs(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the absolute value for each element ``x_i`` of the input array
     ``x`` (i.e., the element-wise result has the same magnitude as the
@@ -46,7 +45,7 @@ def abs(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).abs(x)
 
 
-def acos(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def acos(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation of the principal
     value of the inverse cosine, having domain ``[-1, +1]`` and codomain
@@ -77,7 +76,7 @@ def acos(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).acos(x)
 
 
-def acosh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def acosh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the inverse
     hyperbolic cosine, having domain ``[+1, +infinity]`` and codomain ``[+0,
@@ -108,7 +107,7 @@ def acosh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).acosh(x)
 
 
-def add(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def add(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the sum for each element ``x1_i`` of the input array ``x1`` with
     the respective element ``x2_i`` of the input array ``x2``.
@@ -174,7 +173,7 @@ def add(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant
     return get_namespace(x1, x2).add(x1, x2)
 
 
-def asin(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def asin(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation of the principal value
     of the inverse sine, having domain ``[-1, +1]`` and codomain ``[-π/2,
@@ -206,7 +205,7 @@ def asin(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).asin(x)
 
 
-def asinh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def asinh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the inverse
     hyperbolic sine, having domain ``[-infinity, +infinity]`` and codomain
@@ -239,7 +238,7 @@ def asinh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).asinh(x)
 
 
-def atan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def atan(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation of the principal value
     of the inverse tangent, having domain ``[-infinity, +infinity]`` and
@@ -273,7 +272,7 @@ def atan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).atan(x)
 
 
-def atan2(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def atan2(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation of the inverse tangent
     of the quotient ``x1/x2``, having domain ``[-infinity, +infinity] x
@@ -371,7 +370,7 @@ def atan2(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConforma
     return get_namespace(x1, x2).atan2(x1, x2)
 
 
-def atanh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def atanh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the inverse
     hyperbolic tangent, having domain ``[-1, +1]`` and codomain ``[-infinity,
@@ -405,7 +404,7 @@ def atanh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).atanh(x)
 
 
-def bitwise_and(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def bitwise_and(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the bitwise AND of the underlying binary representation of each
     element ``x1_i`` of the input array ``x1`` with the respective element
@@ -428,7 +427,7 @@ def bitwise_and(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICo
     return get_namespace(x1, x2).bitwise_and(x1, x2)
 
 
-def bitwise_left_shift(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def bitwise_left_shift(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Shifts the bits of each element ``x1_i`` of the input array ``x1`` to the
     left by appending ``x2_i`` (i.e., the respective element in the input array
@@ -452,7 +451,7 @@ def bitwise_left_shift(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> Arr
     return get_namespace(x1, x2).bitwise_left_shift(x1, x2)
 
 
-def bitwise_invert(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def bitwise_invert(x: ArrayAPI, /) -> ArrayAPI:
     """
     Inverts (flips) each bit for each element ``x_i`` of the input array ``x``.
 
@@ -470,7 +469,7 @@ def bitwise_invert(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).bitwise_invert(x)
 
 
-def bitwise_or(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def bitwise_or(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the bitwise OR of the underlying binary representation of each
     element ``x1_i`` of the input array ``x1`` with the respective element
@@ -493,7 +492,7 @@ def bitwise_or(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICon
     return get_namespace(x1, x2).bitwise_or(x1, x2)
 
 
-def bitwise_right_shift(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def bitwise_right_shift(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Shifts the bits of each element ``x1_i`` of the input array ``x1`` to the
     right according to the respective element ``x2_i`` of the input array
@@ -522,7 +521,7 @@ def bitwise_right_shift(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> Ar
     return get_namespace(x1, x2).bitwise_right_shift(x1, x2)
 
 
-def bitwise_xor(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def bitwise_xor(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the bitwise XOR of the underlying binary representation of each
     element ``x1_i`` of the input array ``x1`` with the respective element
@@ -545,7 +544,7 @@ def bitwise_xor(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICo
     return get_namespace(x1, x2).bitwise_xor(x1, x2)
 
 
-def ceil(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def ceil(x: ArrayAPI, /) -> ArrayAPI:
     """
     Rounds each element ``x_i`` of the input array ``x`` to the smallest (i.e.,
     closest to ``-infinity``) integer-valued number that is not less than
@@ -577,7 +576,7 @@ def ceil(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).ceil(x)
 
 
-def cos(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def cos(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the cosine, having
     domain ``(-infinity, +infinity)`` and codomain ``[-1, +1]``, for each
@@ -610,7 +609,7 @@ def cos(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).cos(x)
 
 
-def cosh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def cosh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the hyperbolic
     cosine, having domain ``[-infinity, +infinity]`` and codomain ``[-infinity,
@@ -642,7 +641,7 @@ def cosh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).cosh(x)
 
 
-def divide(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def divide(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the division for each element ``x1_i`` of the input array ``x1``
     with the respective element ``x2_i`` of the input array ``x2``.
@@ -727,7 +726,7 @@ def divide(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConform
     return get_namespace(x1, x2).divide(x1, x2)
 
 
-def equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the truth value of ``x1_i == x2_i`` for each element ``x1_i`` of
     the input array ``x1`` with the respective element ``x2_i`` of the input
@@ -750,7 +749,7 @@ def equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConforma
     return get_namespace(x1, x2).equal(x1, x2)
 
 
-def exp(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def exp(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the exponential
     function, having domain ``[-infinity, +infinity]`` and codomain ``[+0,
@@ -783,7 +782,7 @@ def exp(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).exp(x)
 
 
-def expm1(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def expm1(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to ``exp(x)-1``, having
     domain ``[-infinity, +infinity]`` and codomain ``[-1, +infinity]``, for each
@@ -822,7 +821,7 @@ def expm1(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).expm1(x)
 
 
-def floor(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def floor(x: ArrayAPI, /) -> ArrayAPI:
     """
     Rounds each element ``x_i`` of the input array ``x`` to the greatest (i.e.,
     closest to ``+infinity``) integer-valued number that is not greater than
@@ -854,7 +853,7 @@ def floor(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).floor(x)
 
 
-def floor_divide(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def floor_divide(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     r"""
     Rounds the result of dividing each element ``x1_i`` of the input array
     ``x1`` by the respective element ``x2_i`` of the input array ``x2`` to the
@@ -974,7 +973,7 @@ def floor_divide(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIC
     return get_namespace(x1, x2).floor_divide(x1, x2)
 
 
-def greater(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def greater(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the truth value of ``x1_i > x2_i`` for each element ``x1_i`` of the
     input array ``x1`` with the respective element ``x2_i`` of the input array
@@ -997,7 +996,7 @@ def greater(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConfor
     return get_namespace(x1, x2).greater(x1, x2)
 
 
-def greater_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def greater_equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the truth value of ``x1_i >= x2_i`` for each element ``x1_i`` of
     the input array ``x1`` with the respective element ``x2_i`` of the input
@@ -1020,7 +1019,7 @@ def greater_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPI
     return get_namespace(x1, x2).greater_equal(x1, x2)
 
 
-def isfinite(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def isfinite(x: ArrayAPI, /) -> ArrayAPI:
     """
     Tests each element ``x_i`` of the input array ``x`` to determine if finite
     (i.e., not ``NaN`` and not equal to positive or negative infinity).
@@ -1040,7 +1039,7 @@ def isfinite(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).isfinite(x)
 
 
-def isinf(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def isinf(x: ArrayAPI, /) -> ArrayAPI:
     """
     Tests each element ``x_i`` of the input array ``x`` to determine if equal to
     positive or negative infinity.
@@ -1060,7 +1059,7 @@ def isinf(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).isinf(x)
 
 
-def isnan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def isnan(x: ArrayAPI, /) -> ArrayAPI:
     """
     Tests each element ``x_i`` of the input array ``x`` to determine whether the
     element is ``NaN``.
@@ -1080,7 +1079,7 @@ def isnan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).isnan(x)
 
 
-def less(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def less(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the truth value of ``x1_i < x2_i`` for each element ``x1_i`` of the
     input array ``x1`` with the respective element ``x2_i`` of the input array
@@ -1103,7 +1102,7 @@ def less(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConforman
     return get_namespace(x1, x2).less(x1, x2)
 
 
-def less_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def less_equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the truth value of ``x1_i <= x2_i`` for each element ``x1_i`` of
     the input array ``x1`` with the respective element ``x2_i`` of the input
@@ -1126,7 +1125,7 @@ def less_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICon
     return get_namespace(x1, x2).less_equal(x1, x2)
 
 
-def log(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def log(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the natural (base
     ``e``) logarithm, having domain ``[0, +infinity]`` and codomain
@@ -1158,7 +1157,7 @@ def log(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).log(x)
 
 
-def log1p(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def log1p(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to ``log(1+x)``, where
     ``log`` refers to the natural (base ``e``) logarithm, having domain ``[-1,
@@ -1199,7 +1198,7 @@ def log1p(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).log1p(x)
 
 
-def log2(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def log2(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the base ``2``
     logarithm, having domain ``[0, +infinity]`` and codomain ``[-infinity,
@@ -1230,7 +1229,7 @@ def log2(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).log2(x)
 
 
-def log10(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def log10(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the base ``10``
     logarithm, having domain ``[0, +infinity]`` and codomain ``[-infinity,
@@ -1261,7 +1260,7 @@ def log10(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).log10(x)
 
 
-def logaddexp(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def logaddexp(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the logarithm of the sum of exponentiations ``log(exp(x1) +
     exp(x2))`` for each element ``x1_i`` of the input array ``x1`` with the
@@ -1293,7 +1292,7 @@ def logaddexp(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConf
     return get_namespace(x1, x2).logaddexp(x1, x2)
 
 
-def logical_and(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def logical_and(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the logical AND for each element ``x1_i`` of the input array ``x1``
     with the respective element ``x2_i`` of the input array ``x2``.
@@ -1324,7 +1323,7 @@ def logical_and(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICo
     return get_namespace(x1, x2).logical_and(x1, x2)
 
 
-def logical_not(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def logical_not(x: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the logical NOT for each element ``x_i`` of the input array ``x``.
 
@@ -1351,7 +1350,7 @@ def logical_not(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).logical_not(x)
 
 
-def logical_or(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def logical_or(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the logical OR for each element ``x1_i`` of the input array ``x1``
     with the respective element ``x2_i`` of the input array ``x2``.
@@ -1382,7 +1381,7 @@ def logical_or(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICon
     return get_namespace(x1, x2).logical_or(x1, x2)
 
 
-def logical_xor(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def logical_xor(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the logical XOR for each element ``x1_i`` of the input array ``x1``
     with the respective element ``x2_i`` of the input array ``x2``.
@@ -1413,7 +1412,7 @@ def logical_xor(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPICo
     return get_namespace(x1, x2).logical_xor(x1, x2)
 
 
-def multiply(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def multiply(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the product for each element ``x1_i`` of the input array ``x1``
     with the respective element ``x2_i`` of the input array ``x2``.
@@ -1471,7 +1470,7 @@ def multiply(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConfo
     return get_namespace(x1, x2).multiply(x1, x2)
 
 
-def negative(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def negative(x: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the numerical negative of each element ``x_i`` (i.e., ``y_i =
     -x_i``) of the input array ``x``.
@@ -1496,7 +1495,7 @@ def negative(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).negative(x)
 
 
-def not_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def not_equal(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the truth value of ``x1_i != x2_i`` for each element ``x1_i`` of
     the input array ``x1`` with the respective element ``x2_i`` of the input
@@ -1519,7 +1518,7 @@ def not_equal(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConf
     return get_namespace(x1, x2).not_equal(x1, x2)
 
 
-def positive(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def positive(x: ArrayAPI, /) -> ArrayAPI:
     """
     Computes the numerical positive of each element ``x_i`` (i.e., ``y_i =
     +x_i``) of the input array ``x``.
@@ -1538,7 +1537,7 @@ def positive(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).positive(x)
 
 
-def pow(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def pow(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation of exponentiation by
     raising each element ``x1_i`` (the base) of the input array ``x1`` to the
@@ -1625,7 +1624,7 @@ def pow(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant
     return get_namespace(x1, x2).pow(x1, x2)
 
 
-def remainder(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def remainder(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Returns the remainder of division for each element ``x1_i`` of the input
     array ``x1`` and the respective element ``x2_i`` of the input array ``x2``.
@@ -1713,7 +1712,7 @@ def remainder(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConf
     return get_namespace(x1, x2).remainder(x1, x2)
 
 
-def round(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def round(x: ArrayAPI, /) -> ArrayAPI:
     """
     Rounds each element ``x_i`` of the input array ``x`` to the nearest
     integer-valued number.
@@ -1746,7 +1745,7 @@ def round(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).round(x)
 
 
-def sign(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def sign(x: ArrayAPI, /) -> ArrayAPI:
     """
     Returns an indication of the sign of a number for each element
     ``x_i`` of the input array ``x``.
@@ -1771,7 +1770,7 @@ def sign(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).sign(x)
 
 
-def sin(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def sin(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the sine, having
     domain ``(-infinity, +infinity)`` and codomain ``[-1, +1]``, for each
@@ -1804,7 +1803,7 @@ def sin(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).sin(x)
 
 
-def sinh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def sinh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the hyperbolic sine,
     having domain ``[-infinity, +infinity]`` and codomain ``[-infinity,
@@ -1836,7 +1835,7 @@ def sinh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).sinh(x)
 
 
-def square(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def square(x: ArrayAPI, /) -> ArrayAPI:
     """
     Squares (``x_i * x_i``) each element ``x_i`` of the input array ``x``.
 
@@ -1855,7 +1854,7 @@ def square(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).square(x)
 
 
-def sqrt(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def sqrt(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the square root, having domain ``[0, +infinity]`` and codomain
     ``[0, +infinity]``, for each element ``x_i`` of the input array ``x``. After
@@ -1887,7 +1886,7 @@ def sqrt(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).sqrt(x)
 
 
-def subtract(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def subtract(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates the difference for each element ``x1_i`` of the input array
     ``x1`` with the respective element ``x2_i`` of the input array ``x2``. The
@@ -1911,7 +1910,7 @@ def subtract(x1: ArrayAPIConformant, x2: ArrayAPIConformant, /) -> ArrayAPIConfo
     return get_namespace(x1, x2).subtract(x1, x2)
 
 
-def tan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def tan(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the tangent, having
     domain ``(-infinity, +infinity)`` and codomain ``(-infinity, +infinity)``,
@@ -1944,7 +1943,7 @@ def tan(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).tan(x)
 
 
-def tanh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def tanh(x: ArrayAPI, /) -> ArrayAPI:
     """
     Calculates an implementation-dependent approximation to the hyperbolic
     tangent, having domain ``[-infinity, +infinity]`` and codomain ``[-1, +1]``,
@@ -1976,7 +1975,7 @@ def tanh(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
     return get_namespace(x).tanh(x)
 
 
-def trunc(x: ArrayAPIConformant, /) -> ArrayAPIConformant:
+def trunc(x: ArrayAPI, /) -> ArrayAPI:
     """
     Rounds each element ``x_i`` of the input array ``x`` to the integer-valued
     number that is closest to but no greater than ``x_i``.

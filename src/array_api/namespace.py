@@ -1,20 +1,23 @@
+"""Namespace utilities for array APIs."""
+
 from __future__ import annotations
 
-# STDLIB
 from typing import TYPE_CHECKING, Any
 
-# LOCAL
-from array_api.array import ArrayAPIConformant
+from array_api.array import ArrayAPI
 
 if TYPE_CHECKING:
-    # LOCAL
     from array_api._types import ArrayAPINamespace
 
 __all__: list[str] = []
 
 
-def get_namespace(*xs: Any, api_version: str | None = None) -> ArrayAPINamespace:
-    """Get the array API namespace for the given array inputs.
+def get_namespace(
+    *xs: Any,  # noqa: ANN401
+    api_version: str | None = None,
+) -> ArrayAPINamespace:
+    """
+    Get the array API namespace for the given array inputs.
 
     Parameters
     ----------
@@ -35,11 +38,17 @@ def get_namespace(*xs: Any, api_version: str | None = None) -> ArrayAPINamespace
         If the inputs are from multiple array API namespaces.
     """
     # `xs` contains one or more arrays.
-    namespaces = {x.__array_namespace__(api_version=api_version) for x in xs if isinstance(x, ArrayAPIConformant)}
+    namespaces = {
+        x.__array_namespace__(api_version=api_version)
+        for x in xs
+        if isinstance(x, ArrayAPI)
+    }
 
     if not namespaces:
-        raise ValueError("Unrecognized array input")
-    elif len(namespaces) != 1:
-        raise ValueError(f"Multiple namespaces for array inputs: {namespaces}")
+        msg = "Unrecognized array input"
+        raise ValueError(msg)
+    if len(namespaces) != 1:
+        msg = f"Multiple namespaces for array inputs: {namespaces}"
+        raise ValueError(msg)
 
     return namespaces.pop()

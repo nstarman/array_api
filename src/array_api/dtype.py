@@ -1,20 +1,20 @@
+"""DType protocol."""
+
 from __future__ import annotations
 
-# STDLIB
-from typing import Protocol, TypeVar, runtime_checkable
+from typing import Protocol, runtime_checkable
 
 __all__: list[str] = []
 
-DType = TypeVar("DType", bound="DTypeConformant")
-
 
 @runtime_checkable
-class DTypeConformant(Protocol):
+class DType(Protocol):
     """Runtime-checkable protocol for the dtype."""
 
     def __eq__(self: DType, other: DType, /) -> bool:
         """
-        Computes the truth value of ``self == other`` in order to test for data type object equality.
+        Computes the truth value of ``self == other`` in order to test for data
+        type object equality.
 
         Parameters
         ----------
