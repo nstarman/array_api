@@ -1,11 +1,13 @@
-"""Utility functions."""
+"""Sorting functions."""
+
+from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
 from array_api.namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI  # noqa: TCH004
+    from array_api.array import ArrayAPI
 
 __all__: list[str] = []
 
