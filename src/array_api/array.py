@@ -346,7 +346,12 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __dlpack__(self, /, *, stream: int | Any | None = None) -> PyCapsule:
+    def __dlpack__(
+        self,
+        /,
+        *,
+        stream: int | Any | None = None,  # noqa: ANN401
+    ) -> PyCapsule:
         """
         Exports the array for consumption by
         :func:`~array_api.creation_functions.from_dlpack` as a DLPack capsule.
@@ -1551,7 +1556,7 @@ class ArrayAPI(Protocol):
         device: Device,
         /,
         *,
-        stream: int | Any | None = None,
+        stream: int | Any | None = None,  # noqa: ANN401
     ) -> Self:
         """
         Copy the array from the device on which it currently resides to the
