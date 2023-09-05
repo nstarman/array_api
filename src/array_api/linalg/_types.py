@@ -54,7 +54,7 @@ class ArrayAPILinAlgNamespace(Protocol):
         /,
         *,
         keepdims: bool = False,
-        ord: int | float | Literal["fro", "nuc"] | None = "fro",
+        ord: float | Literal["fro", "nuc"] | None = "fro",
     ) -> ArrayAPI:
         ...
 
@@ -143,6 +143,6 @@ class ArrayAPILinAlgNamespace(Protocol):
         *,
         axis: int | tuple[int, ...] | None = None,
         keepdims: bool = False,
-        ord: int | float = 2,
+        ord: float = 2,
     ) -> ArrayAPI:
         ...

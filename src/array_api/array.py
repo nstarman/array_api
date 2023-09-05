@@ -198,7 +198,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __add__(self: Self, other: int | float | Self, /) -> Self:
+    def __add__(self: Self, other: float | Self, /) -> Self:
         """
         Calculates the sum for each element of an array instance with the
         respective element of the array ``other``.
@@ -498,7 +498,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __floordiv__(self: Self, other: int | float | Self, /) -> Self:
+    def __floordiv__(self: Self, other: float | Self, /) -> Self:
         """
         Evaluates ``self_i // other_i`` for each element of an array instance
         with the respective element of the array ``other``.
@@ -626,7 +626,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __ge__(self: Self, other: int | float | Self, /) -> Self:
+    def __ge__(self: Self, other: float | Self, /) -> Self:
         """
         Computes the truth value of ``self_i >= other_i`` for each element of an
         array instance with the respective element of the array ``other``.
@@ -681,7 +681,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __gt__(self: Self, other: int | float | Self, /) -> Self:
+    def __gt__(self: Self, other: float | Self, /) -> Self:
         """
         Computes the truth value of ``self_i > other_i`` for each element of an
         array instance with the respective element of the array ``other``.
@@ -772,7 +772,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __le__(self: Self, other: int | float | Self, /) -> Self:
+    def __le__(self: Self, other: float | Self, /) -> Self:
         """
         Computes the truth value of ``self_i <= other_i`` for each element of an
         array instance with the respective element of the array ``other``.
@@ -829,7 +829,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __lt__(self: Self, other: int | float | Self, /) -> Self:
+    def __lt__(self: Self, other: float | Self, /) -> Self:
         """
         Computes the truth value of ``self_i < other_i`` for each element of an
         array instance with the respective element of the array ``other``.
@@ -962,7 +962,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __mod__(self: Self, other: int | float | Self, /) -> Self:
+    def __mod__(self: Self, other: float | Self, /) -> Self:
         """
         Evaluates ``self_i % other_i`` for each element of an array instance
         with the respective element of the array ``other``.
@@ -1053,7 +1053,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __mul__(self: Self, other: int | float | Self, /) -> Self:
+    def __mul__(self: Self, other: float | Self, /) -> Self:
         """
         Calculates the product for each element of an array instance with the
         respective element of the array ``other``.
@@ -1231,7 +1231,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __pow__(self: Self, other: int | float | Self, /) -> Self:
+    def __pow__(self: Self, other: float | Self, /) -> Self:
         """
         Calculates an implementation-dependent approximation of exponentiation
         by raising each element (the base) of an array instance to the power of
@@ -1365,7 +1365,7 @@ class ArrayAPI(Protocol):
         | EllipsisType
         | tuple[int | slice | EllipsisType, ...]
         | ArrayAPI,
-        value: int | float | bool | Self,
+        value: float | bool | Self,
         /,
     ) -> None:
         """
@@ -1377,7 +1377,7 @@ class ArrayAPI(Protocol):
             array instance.
         key: int | slice | ellipsis, Tuple[int | slice | ellipsis, ...], array]
             index key.
-        value: int | float | bool | array
+        value: float | bool | array
             value(s) to set. Must be compatible with ``self[key]`` (see
             :ref:`broadcasting`).
 
@@ -1396,7 +1396,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __sub__(self: Self, other: int | float | Self, /) -> Self:
+    def __sub__(self: Self, other: float | Self, /) -> Self:
         """
         Calculates the difference for each element of an array instance with the
         respective element of the array ``other``. The result of ``self_i -
@@ -1427,7 +1427,7 @@ class ArrayAPI(Protocol):
         """
         ...
 
-    def __truediv__(self: Self, other: int | float | Self, /) -> Self:
+    def __truediv__(self: Self, other: float | Self, /) -> Self:
         """
         Evaluates ``self_i / other_i`` for each element of an array instance
         with the respective element of the array ``other``.

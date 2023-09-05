@@ -258,7 +258,7 @@ def std(
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
-    correction: int | float = 0.0,
+    correction: float = 0.0,
     keepdims: bool = False,
 ) -> ArrayAPI:
     """
@@ -410,7 +410,7 @@ def var(
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
-    correction: int | float = 0.0,
+    correction: float = 0.0,
     keepdims: bool = False,
 ) -> ArrayAPI:
     """

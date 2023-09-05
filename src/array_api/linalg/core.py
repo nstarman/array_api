@@ -250,7 +250,7 @@ def matrix_norm(
     /,
     *,
     keepdims: bool = False,
-    ord: int | float | Literal["fro", "nuc"] | None = "fro",
+    ord: float | Literal["fro", "nuc"] | None = "fro",
 ) -> ArrayAPI:
     """
     Computes the matrix norm of a matrix (or a stack of matrices) ``x``.
@@ -738,7 +738,7 @@ def vector_norm(
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
-    ord: int | float = 2,
+    ord: float = 2,
 ) -> ArrayAPI:
     r"""
     Computes the vector norm of a vector (or batch of vectors) ``x``.
