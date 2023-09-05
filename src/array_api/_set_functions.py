@@ -9,7 +9,12 @@ from array_api.namespace import get_namespace
 if TYPE_CHECKING:
     from array_api.array import ArrayAPI
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "unique_all",
+    "unique_counts",
+    "unique_inverse",
+    "unique_values",
+]
 
 
 def unique_all(

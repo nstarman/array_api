@@ -9,7 +9,10 @@ from array_api.namespace import get_namespace
 if TYPE_CHECKING:
     from array_api.array import ArrayAPI
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "all",
+    "any",
+]
 
 
 def all(

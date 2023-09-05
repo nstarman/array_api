@@ -164,7 +164,9 @@ ignore = [
   "D205",    # 1 blank line required between summary line and description
   "D212",    # Multi-line docstring summary should start at the first line
   "D401",    # First line should be in imperative mood
+  "F403",    # 'from module import *' used; unable to detect undefined names
   "PD",      # Pandas
+  "PLE0605",  # Invalid format for `__all__`, must be `tuple` or `list`
   "PLR0913",   # Too many arguments to function call
 ]
 line-length = 80

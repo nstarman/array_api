@@ -9,7 +9,16 @@ from array_api.namespace import get_namespace
 if TYPE_CHECKING:
     from array_api.array import ArrayAPI
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "concat",
+    "expand_dims",
+    "flip",
+    "permute_dims",
+    "reshape",
+    "roll",
+    "squeeze",
+    "stack",
+]
 
 
 def concat(

@@ -11,7 +11,12 @@ if TYPE_CHECKING:
 
     from array_api.array import ArrayAPI
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "matmul",
+    "matrix_transpose",
+    "tensordot",
+    "vecdot",
+]
 
 
 def matmul(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:

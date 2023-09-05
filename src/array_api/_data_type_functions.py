@@ -10,7 +10,11 @@ if TYPE_CHECKING:
     from array_api.array import ArrayAPI
     from array_api.dtype import DType
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "astype",
+    "broadcast_arrays",
+    "broadcast_to",
+]
 
 
 _EMPTY_DICT: Final[dict[str, Any]] = {}

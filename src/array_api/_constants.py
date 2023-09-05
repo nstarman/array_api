@@ -1,5 +1,7 @@
 """Constants."""
 
+__all__ = ["e", "inf", "nan", "newaxis", "pi"]
+
 e = 2.71828182845904523536028747135266249775724709369995
 # IEEE 754 floating-point representation of Euler's constant.
 # ``e = 2.71828182845904523536028747135266249775724709369995...``

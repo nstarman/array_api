@@ -11,7 +11,15 @@ if TYPE_CHECKING:
     from array_api.device import Device
     from array_api.dtype import DType
 
-__all__: list[str] = []
+__all__ = [
+    "empty_like",
+    "full_like",
+    "meshgrid",
+    "ones_like",
+    "tril",
+    "triu",
+    "zeros_like",
+]
 
 
 def empty_like(

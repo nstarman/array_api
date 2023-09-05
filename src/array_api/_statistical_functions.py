@@ -11,7 +11,15 @@ if TYPE_CHECKING:
     from array_api.dtype import DType
 
 
-__all__: list[str] = []
+__all__: list[str] = [
+    "max",
+    "mean",
+    "min",
+    "prod",
+    "std",
+    "sum",
+    "var",
+]
 
 
 def max(

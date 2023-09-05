@@ -38,7 +38,7 @@ def get_namespace(
         If the inputs are from multiple array API namespaces.
     """
     # `xs` contains one or more arrays.
-    namespaces = {
+    namespaces: set[ArrayAPINamespace] = {
         x.__array_namespace__(api_version=api_version)
         for x in xs
         if isinstance(x, ArrayAPI)
