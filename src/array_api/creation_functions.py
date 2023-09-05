@@ -48,7 +48,7 @@ def empty_like(
 def full_like(
     x: ArrayAPI,
     /,
-    fill_value: int | float,
+    fill_value: float,
     *,
     dtype: DType | None = None,
     device: Device | None = None,

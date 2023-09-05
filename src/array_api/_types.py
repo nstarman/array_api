@@ -80,10 +80,10 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def arange(
-        start: int | float,
+        start: float,
         /,
-        stop: int | float | None = None,
-        step: int | float = 1,
+        stop: float | None = None,
+        step: float = 1,
         *,
         dtype: DType | None = None,
         device: Device | None = None,
@@ -94,9 +94,8 @@ class ArrayAPINamespace(Protocol):
     def asarray(
         obj: ArrayAPI
         | bool
-        | int
         | float
-        | NestedSequence[bool | int | float]
+        | NestedSequence[bool | float]
         | SupportsBufferProtocol,
         /,
         *,
@@ -135,7 +134,7 @@ class ArrayAPINamespace(Protocol):
     @staticmethod
     def full(
         shape: int | tuple[int, ...],
-        fill_value: int | float,
+        fill_value: float,
         *,
         dtype: DType | None = None,
         device: Device | None = None,
@@ -146,7 +145,7 @@ class ArrayAPINamespace(Protocol):
     def full_like(
         x: ArrayAPI,
         /,
-        fill_value: int | float,
+        fill_value: float,
         *,
         dtype: DType | None = None,
         device: Device | None = None,
@@ -155,8 +154,8 @@ class ArrayAPINamespace(Protocol):
 
     @staticmethod
     def linspace(
-        start: int | float,
-        stop: int | float,
+        start: float,
+        stop: float,
         /,
         num: int,
         *,
@@ -693,7 +692,7 @@ class ArrayAPINamespace(Protocol):
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
-        correction: int | float = 0.0,
+        correction: float = 0.0,
         keepdims: bool = False,
     ) -> ArrayAPI:
         ...
@@ -715,7 +714,7 @@ class ArrayAPINamespace(Protocol):
         /,
         *,
         axis: int | tuple[int, ...] | None = None,
-        correction: int | float = 0.0,
+        correction: float = 0.0,
         keepdims: bool = False,
     ) -> ArrayAPI:
         ...
