@@ -25,6 +25,7 @@ if TYPE_CHECKING:
 
 def get_namespace(
     *xs: Any,  # noqa: ANN401
+    array_traits: type | tuple[type, ...] = Array,
     api_version: str | None = None,
 ) -> ArrayAPINamespace:
     """
@@ -34,6 +35,12 @@ def get_namespace(
     ----------
     *xs : Any
         Input arrays for which to get the array API namespace.
+    array_traits : type | tuple[type, ...], optional
+        The array traits to check for, by default full `Array`.  If a tuple,
+        this checks for ALL of the traits (formally this is an intersection of
+        the traits). For example, if `array_traits` is ``(Array, Mapping)``,
+        then the inputs must be both ``Array`` and ``Mapping`` to be considered
+        conformant.
     api_version : str | None, optional
         The array API version, by default `None`.
 
@@ -45,14 +52,21 @@ def get_namespace(
     Raises
     ------
     ValueError
-        If none of the inputs are array API conformant.
-        If the inputs are from multiple array API namespaces.
+        If none of the inputs are array API conformant.  If the inputs are from
+        multiple array API namespaces.
     """
     # `xs` contains one or more arrays.
     namespaces: set[ArrayAPINamespace] = {
         x.__array_namespace__(api_version=api_version)
         for x in xs
-        if isinstance(x, Array)
+        if all(
+            isinstance(x, trait)
+            for trait in (
+                array_traits
+                if isinstance(array_traits, tuple)
+                else (array_traits,)
+            )
+        )
     }
 
     if not namespaces:
