@@ -4,22 +4,17 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
-    from array_api.array import ArrayAPI
+    from array_api._array import Array
 
-__all__: list[str] = [
-    "matmul",
-    "matrix_transpose",
-    "tensordot",
-    "vecdot",
-]
+__all__ = ["matmul", "matrix_transpose", "tensordot", "vecdot"]
 
 
-def matmul(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
+def matmul(x1: Array, x2: Array, /) -> Array:
     """
     Computes the matrix product.
 
@@ -113,7 +108,7 @@ def matmul(x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
     return get_namespace(x1, x2).matmul(x1, x2)
 
 
-def matrix_transpose(x: ArrayAPI, /) -> ArrayAPI:
+def matrix_transpose(x: Array, /) -> Array:
     """
     Transposes a matrix (or a stack of matrices) ``x``.
 
@@ -134,12 +129,12 @@ def matrix_transpose(x: ArrayAPI, /) -> ArrayAPI:
 
 
 def tensordot(
-    x1: ArrayAPI,
-    x2: ArrayAPI,
+    x1: Array,
+    x2: Array,
     /,
     *,
     axes: int | tuple[Sequence[int], Sequence[int]] = 2,
-) -> ArrayAPI:
+) -> Array:
     """
     Returns a tensor contraction of ``x1`` and ``x2`` over specific axes.
 
@@ -190,7 +185,7 @@ def tensordot(
     return xp.tensordot(x1, x2, axes=axes)
 
 
-def vecdot(x1: ArrayAPI, x2: ArrayAPI, /, *, axis: int = -1) -> ArrayAPI:
+def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
     """
     Computes the (vector) dot product of two arrays.
 

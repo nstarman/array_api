@@ -4,25 +4,22 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
+    from array_api._array import Array
 
-__all__: list[str] = [
-    "sort",
-    "argsort",
-]
+__all__ = ["sort", "argsort"]
 
 
 def argsort(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int = -1,
     descending: bool = False,
     stable: bool = True,
-) -> ArrayAPI:
+) -> Array:
     """
     Returns the indices that sort an array ``x`` along a specified axis.
 
@@ -51,21 +48,18 @@ def argsort(
         ``x``. The returned array must have the default array index data type.
     """
     return get_namespace(x).argsort(
-        x,
-        axis=axis,
-        descending=descending,
-        stable=stable,
+        x, axis=axis, descending=descending, stable=stable
     )
 
 
 def sort(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int = -1,
     descending: bool = False,
     stable: bool = True,
-) -> ArrayAPI:
+) -> Array:
     """
     Returns a sorted copy of an input array ``x``.
 
@@ -94,8 +88,5 @@ def sort(
         shape as ``x``.
     """
     return get_namespace(x).sort(
-        x,
-        axis=axis,
-        descending=descending,
-        stable=stable,
+        x, axis=axis, descending=descending, stable=stable
     )

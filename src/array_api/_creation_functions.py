@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
-    from array_api.device import Device
-    from array_api.dtype import DType
+    from array_api._array import Array
+    from array_api._device import Device
+    from array_api._dtype import DType
 
 __all__ = [
     "empty_like",
@@ -23,12 +23,8 @@ __all__ = [
 
 
 def empty_like(
-    x: ArrayAPI,
-    /,
-    *,
-    dtype: DType | None = None,
-    device: Device | None = None,
-) -> ArrayAPI:
+    x: Array, /, *, dtype: DType | None = None, device: Device | None = None
+) -> Array:
     """
     Returns an uninitialized array with the same ``shape`` as an input array
     ``x``.
@@ -54,13 +50,13 @@ def empty_like(
 
 
 def full_like(
-    x: ArrayAPI,
+    x: Array,
     /,
     fill_value: float,
     *,
     dtype: DType | None = None,
     device: Device | None = None,
-) -> ArrayAPI:
+) -> Array:
     """
     Returns a new array filled with ``fill_value`` and having the same ``shape``
     as an input array ``x``.
@@ -99,14 +95,11 @@ def full_like(
         to ``fill_value``.
     """
     return get_namespace(x).full_like(
-        x,
-        fill_value=fill_value,
-        dtype=dtype,
-        device=device,
+        x, fill_value=fill_value, dtype=dtype, device=device
     )
 
 
-def meshgrid(*arrays: ArrayAPI, indexing: str = "xy") -> list[ArrayAPI]:
+def meshgrid(*arrays: Array, indexing: str = "xy") -> list[Array]:
     """
     Returns coordinate matrices from coordinate vectors.
 
@@ -149,12 +142,8 @@ def meshgrid(*arrays: ArrayAPI, indexing: str = "xy") -> list[ArrayAPI]:
 
 
 def ones_like(
-    x: ArrayAPI,
-    /,
-    *,
-    dtype: DType | None = None,
-    device: Device | None = None,
-) -> ArrayAPI:
+    x: Array, /, *, dtype: DType | None = None, device: Device | None = None
+) -> Array:
     """
     Returns a new array filled with ones and having the same ``shape`` as an
     input array ``x``.
@@ -178,7 +167,7 @@ def ones_like(
     return get_namespace(x).ones_like(x, dtype=dtype, device=device)
 
 
-def tril(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
+def tril(x: Array, /, *, k: int = 0) -> Array:
     """
     Returns the lower triangular part of a matrix (or a stack of matrices)
     ``x``.
@@ -214,7 +203,7 @@ def tril(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
     return get_namespace(x).tril(x, k=k)
 
 
-def triu(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
+def triu(x: Array, /, *, k: int = 0) -> Array:
     """
     Returns the upper triangular part of a matrix (or a stack of matrices)
     ``x``.
@@ -251,12 +240,8 @@ def triu(x: ArrayAPI, /, *, k: int = 0) -> ArrayAPI:
 
 
 def zeros_like(
-    x: ArrayAPI,
-    /,
-    *,
-    dtype: DType | None = None,
-    device: Device | None = None,
-) -> ArrayAPI:
+    x: Array, /, *, dtype: DType | None = None, device: Device | None = None
+) -> Array:
     """
     Returns a new array filled with zeros and having the same ``shape`` as an
     input array ``x``.

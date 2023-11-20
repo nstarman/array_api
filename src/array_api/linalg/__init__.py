@@ -1,54 +1,9 @@
 """Array API dispatching implementation."""
 
-# LOCAL
-from array_api.linalg.core import (
-    cholesky,
-    cross,
-    det,
-    diagonal,
-    eigh,
-    eigvalsh,
-    inv,
-    matmul,
-    matrix_norm,
-    matrix_power,
-    matrix_rank,
-    matrix_transpose,
-    outer,
-    pinv,
-    qr,
-    slogdet,
-    solve,
-    svd,
-    svdvals,
-    tensordot,
-    trace,
-    vecdot,
-    vector_norm,
-)
+from array_api.linalg import _core, _namespace
+from array_api.linalg._core import *
+from array_api.linalg._namespace import *
 
-__all__ = [
-    "cholesky",
-    "cross",
-    "det",
-    "diagonal",
-    "eigh",
-    "eigvalsh",
-    "inv",
-    "matmul",
-    "matrix_norm",
-    "matrix_power",
-    "matrix_rank",
-    "matrix_transpose",
-    "outer",
-    "pinv",
-    "qr",
-    "slogdet",
-    "solve",
-    "svd",
-    "svdvals",
-    "tensordot",
-    "trace",
-    "vecdot",
-    "vector_norm",
-]
+__all__ = []
+__all__ += _core.__all__
+__all__ += _namespace.__all__

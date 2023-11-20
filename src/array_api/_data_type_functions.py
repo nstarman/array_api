@@ -4,23 +4,19 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Final
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
-    from array_api.dtype import DType
+    from array_api._array import Array
+    from array_api._dtype import DType
 
-__all__: list[str] = [
-    "astype",
-    "broadcast_arrays",
-    "broadcast_to",
-]
+__all__ = ["astype", "broadcast_arrays", "broadcast_to"]
 
 
 _EMPTY_DICT: Final[dict[str, Any]] = {}
 
 
-def astype(x: ArrayAPI, dtype: DType, /, *, copy: bool = True) -> ArrayAPI:
+def astype(x: Array, dtype: DType, /, *, copy: bool = True) -> Array:
     """
     Copies an array to a specified data type irrespective of
     :ref:`type-promotion` rules.
@@ -62,9 +58,9 @@ def astype(x: ArrayAPI, dtype: DType, /, *, copy: bool = True) -> ArrayAPI:
     return get_namespace(x).astype(x, dtype, copy=copy)
 
 
-def broadcast_arrays(*arrays: ArrayAPI) -> list[ArrayAPI]:
+def broadcast_arrays(*arrays: Array) -> list[Array]:
     """
-    Broadcasts one or more ArrayAPIs against one another.
+    Broadcasts one or more Arrays against one another.
 
     Parameters
     ----------
@@ -81,7 +77,7 @@ def broadcast_arrays(*arrays: ArrayAPI) -> list[ArrayAPI]:
     return get_namespace(*arrays).broadcast_arrays(*arrays)
 
 
-def broadcast_to(x: ArrayAPI, /, shape: tuple[int, ...]) -> ArrayAPI:
+def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array:
     """
     Broadcasts an array to a specified shape.
 

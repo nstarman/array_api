@@ -12,7 +12,7 @@ from setuptools import setup
 ##############################################################################
 # PARAMETERS
 
-USE_MYPYC: bool = True
+USE_MYPYC: bool = False
 
 CURRENT_DIR = Path(__file__).parent
 SRC = CURRENT_DIR / "src"
