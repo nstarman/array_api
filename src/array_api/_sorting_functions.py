@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -90,3 +90,30 @@ def sort(
     return get_namespace(x).sort(
         x, axis=axis, descending=descending, stable=stable
     )
+
+
+####################################################################################################
+
+
+class HasSortingFunctions(Protocol):
+    @staticmethod
+    def argsort(
+        x: Array,
+        /,
+        *,
+        axis: int = -1,
+        descending: bool = False,
+        stable: bool = True,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def sort(
+        x: Array,
+        /,
+        *,
+        axis: int = -1,
+        descending: bool = False,
+        stable: bool = True,
+    ) -> Array:
+        ...

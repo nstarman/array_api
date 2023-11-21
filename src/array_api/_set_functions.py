@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -247,3 +247,24 @@ def unique_values(x: Array, /) -> Array:
             implementations.
     """
     return get_namespace(x).unique_values(x)
+
+
+####################################################################################################
+
+
+class HasSetFunctions(Protocol):
+    @staticmethod
+    def unique_all(x: Array, /) -> tuple[Array, Array, Array, Array]:
+        ...
+
+    @staticmethod
+    def unique_counts(x: Array, /) -> tuple[Array, Array]:
+        ...
+
+    @staticmethod
+    def unique_inverse(x: Array, /) -> tuple[Array, Array]:
+        ...
+
+    @staticmethod
+    def unique_values(x: Array, /) -> Array:
+        ...

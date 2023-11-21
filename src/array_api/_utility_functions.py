@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
     from array_api._array import Array
+    from array_api._types import AxisT
 
 __all__ = ["all", "any"]
 
@@ -118,3 +119,28 @@ def any(
         type of ``bool``.
     """
     return get_namespace(x).any(x, axis=axis, keepdims=keepdims)
+
+
+####################################################################################################
+
+
+class HasUtilityFunctions(Protocol):
+    @staticmethod
+    def all(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def any(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...

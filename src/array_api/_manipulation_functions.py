@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -263,3 +263,52 @@ def stack(
             (i.e., ``intxx`` and ``floatxx``) unspecified.
     """
     return get_namespace(*arrays).stack(arrays, axis=axis)
+
+
+###############################################################################
+
+
+class HasManipulationFunctions(Protocol):
+    @staticmethod
+    def concat(
+        arrays: tuple[Array, ...] | list[Array], /, *, axis: int | None = 0
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def expand_dims(x: Array, /, *, axis: int = 0) -> Array:
+        ...
+
+    @staticmethod
+    def flip(x: Array, /, *, axis: AxisT = None) -> Array:
+        ...
+
+    @staticmethod
+    def permute_dims(x: Array, /, axes: tuple[int, ...]) -> Array:
+        ...
+
+    @staticmethod
+    def reshape(
+        x: Array, /, shape: tuple[int, ...], *, copy: bool | None = None
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def roll(
+        x: Array,
+        /,
+        shift: int | tuple[int, ...],
+        *,
+        axis: AxisT = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def squeeze(x: Array, /, axis: int | tuple[int, ...]) -> Array:
+        ...
+
+    @staticmethod
+    def stack(
+        arrays: tuple[Array, ...] | list[Array], /, *, axis: int = 0
+    ) -> Array:
+        ...

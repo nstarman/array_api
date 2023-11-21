@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+__all__ = ["matmul", "matrix_transpose", "tensordot", "vecdot"]
+
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -10,8 +12,7 @@ if TYPE_CHECKING:
     from collections.abc import Sequence
 
     from array_api._array import Array
-
-__all__ = ["matmul", "matrix_transpose", "tensordot", "vecdot"]
+    from array_api.linalg import ArrayAPILinAlgNamespace
 
 
 def matmul(x1: Array, x2: Array, /) -> Array:
@@ -225,3 +226,34 @@ def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
     """
     xp = get_namespace(x1, x2)
     return xp.vecdot(x1, x2, axis=axis)
+
+
+####################################################################################################
+
+
+class HasLinearAlgebraFunctions(Protocol):
+    @property
+    def linalg(self) -> ArrayAPILinAlgNamespace:
+        ...
+
+    @staticmethod
+    def matmul(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def matrix_transpose(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def tensordot(
+        x1: Array,
+        x2: Array,
+        /,
+        *,
+        axes: int | tuple[Sequence[int], Sequence[int]] = 2,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
+        ...
