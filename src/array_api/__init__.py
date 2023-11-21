@@ -1,214 +1,58 @@
-"""Array API dispatching implementation."""
+"""Array API."""
 
 
-from array_api.linear_algebra_functions import (
-    matmul,
-    matrix_transpose,
-    tensordot,
-    vecdot,
+from array_api import (
+    _array,
+    _constants,
+    _creation_functions,
+    _data_type_functions,
+    _device,
+    _dtype,
+    _elementwise_functions,
+    _linear_algebra_functions,
+    _manipulation_functions,
+    _namespace,
+    _searching_functions,
+    _set_functions,
+    _sorting_functions,
+    _statistical_functions,
+    _types,
+    _utility_functions,
 )
-from array_api.manipulation_functions import (
-    concat,
-    expand_dims,
-    flip,
-    permute_dims,
-    reshape,
-    roll,
-    squeeze,
-    stack,
-)
-from array_api.searching_functions import argmax, argmin, nonzero
-from array_api.set_functions import (
-    unique_all,
-    unique_counts,
-    unique_inverse,
-    unique_values,
-)
-from array_api.sorting_functions import argsort, sort
-from array_api.statistical_functions import max, mean, min, prod, std, sum, var
-from array_api.utility_functions import all, any
+from array_api._array import *
+from array_api._constants import *
+from array_api._creation_functions import *
+from array_api._data_type_functions import *
+from array_api._device import *
+from array_api._dtype import *
+from array_api._elementwise_functions import *
+from array_api._linear_algebra_functions import *
+from array_api._manipulation_functions import *
+from array_api._namespace import *
+from array_api._searching_functions import *
+from array_api._set_functions import *
+from array_api._sorting_functions import *
+from array_api._statistical_functions import *
+from array_api._types import *
+from array_api._utility_functions import *
 
-from . import linalg
-from .constants import e, inf, nan, newaxis, pi
-from .creation_functions import (
-    empty_like,
-    full_like,
-    meshgrid,
-    ones_like,
-    tril,
-    triu,
-    zeros_like,
-)
-from .data_type_functions import astype, broadcast_arrays, broadcast_to
-from .elementwise_functions import (
-    abs,
-    acos,
-    acosh,
-    add,
-    asin,
-    asinh,
-    atan,
-    atan2,
-    atanh,
-    bitwise_and,
-    bitwise_invert,
-    bitwise_left_shift,
-    bitwise_or,
-    bitwise_right_shift,
-    bitwise_xor,
-    ceil,
-    cos,
-    cosh,
-    divide,
-    equal,
-    exp,
-    expm1,
-    floor,
-    floor_divide,
-    greater,
-    greater_equal,
-    isfinite,
-    isinf,
-    isnan,
-    less,
-    less_equal,
-    log,
-    log1p,
-    log2,
-    log10,
-    logaddexp,
-    logical_and,
-    logical_not,
-    logical_or,
-    logical_xor,
-    multiply,
-    negative,
-    not_equal,
-    positive,
-    pow,
-    remainder,
-    round,
-    sign,
-    sin,
-    sinh,
-    sqrt,
-    square,
-    subtract,
-    tan,
-    tanh,
-    trunc,
-)
-
-__all__ = [
-    "linalg",
-    # constants
-    "e",
-    "inf",
-    "nan",
-    "newaxis",
-    "pi",
-    "empty_like",
-    "full_like",
-    "meshgrid",
-    "ones_like",
-    "tril",
-    "triu",
-    "zeros_like",
-    # data type functions
-    "astype",
-    "broadcast_arrays",
-    "broadcast_to",
-    "abs",
-    "acos",
-    "acosh",
-    "add",
-    "asin",
-    "asinh",
-    "atan",
-    "atan2",
-    "atanh",
-    "bitwise_and",
-    "bitwise_left_shift",
-    "bitwise_invert",
-    "bitwise_or",
-    "bitwise_right_shift",
-    "bitwise_xor",
-    "ceil",
-    "cos",
-    "cosh",
-    "divide",
-    "equal",
-    "exp",
-    "expm1",
-    "floor",
-    "floor_divide",
-    "greater",
-    "greater_equal",
-    "isfinite",
-    "isinf",
-    "isnan",
-    "less",
-    "less_equal",
-    "log",
-    "log1p",
-    "log2",
-    "log10",
-    "logaddexp",
-    "logical_and",
-    "logical_not",
-    "logical_or",
-    "logical_xor",
-    "multiply",
-    "negative",
-    "not_equal",
-    "positive",
-    "pow",
-    "remainder",
-    "round",
-    "sign",
-    "sin",
-    "sinh",
-    "square",
-    "sqrt",
-    "subtract",
-    "tan",
-    "tanh",
-    "trunc",
-    # linear algebra functions
-    "matmul",
-    "matrix_transpose",
-    "tensordot",
-    "vecdot",
-    # manipulation functions
-    "concat",
-    "expand_dims",
-    "flip",
-    "permute_dims",
-    "reshape",
-    "roll",
-    "squeeze",
-    "stack",
-    # searching functions
-    "argmax",
-    "argmin",
-    "nonzero",
-    # set functions
-    "unique_all",
-    "unique_counts",
-    "unique_inverse",
-    "unique_values",
-    # sorting functions
-    "sort",
-    "argsort",
-    # statistics functions
-    "max",
-    "mean",
-    "min",
-    "prod",
-    "std",
-    "sum",
-    "var",
-    # utility functions
-    "all",
-    "any",
-]
+__all__ = []
+# From the Standard:
+__all__ += _constants.__all__
+__all__ += _types.__all__
+# functions
+__all__ += _creation_functions.__all__
+__all__ += _data_type_functions.__all__
+__all__ += _elementwise_functions.__all__
+__all__ += _linear_algebra_functions.__all__
+__all__ += _manipulation_functions.__all__
+__all__ += _searching_functions.__all__
+__all__ += _set_functions.__all__
+__all__ += _sorting_functions.__all__
+__all__ += _statistical_functions.__all__
+__all__ += _utility_functions.__all__
+# Additional types
+__all__ += _array.__all__
+__all__ += _device.__all__
+__all__ += _dtype.__all__
+__all__ += _namespace.__all__

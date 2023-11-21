@@ -4,21 +4,21 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
+    from array_api._array import Array
 
-__all__: list[str] = []
+__all__ = ["all", "any"]
 
 
 def all(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Tests whether all input array elements evaluate to ``True`` along a
     specified axis.
@@ -67,12 +67,12 @@ def all(
 
 
 def any(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Tests whether any input array element evaluates to ``True`` along a
     specified axis.

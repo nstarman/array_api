@@ -2,25 +2,24 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Protocol, TypeVar, runtime_checkable
+__all__ = ["Array"]
+
+from typing import TYPE_CHECKING, Any, Protocol, runtime_checkable
 
 if TYPE_CHECKING:
     from enum import Enum
     from types import EllipsisType
 
-    from array_api._types import ArrayAPINamespace, PyCapsule
-    from array_api.device import Device
-    from array_api.dtype import DType
+    from typing_extensions import Self
 
-
-__all__: list[str] = []
-
-
-Self = TypeVar("Self", bound="ArrayAPI")
+    from array_api._device import Device
+    from array_api._dtype import DType
+    from array_api._namespace import ArrayAPINamespace
+    from array_api._types import PyCapsule
 
 
 @runtime_checkable
-class ArrayAPI(Protocol):
+class Array(Protocol):
     """Runtime checkable protocol for conformance with the array API."""
 
     @property
@@ -299,10 +298,7 @@ class ArrayAPI(Protocol):
         ...
 
     def __array_namespace__(
-        self,
-        /,
-        *,
-        api_version: str | None = None,
+        self, /, *, api_version: str | None = None
     ) -> ArrayAPINamespace:
         """
         Returns an object that has all the array API functions on it.
@@ -1364,7 +1360,7 @@ class ArrayAPI(Protocol):
         | slice
         | EllipsisType
         | tuple[int | slice | EllipsisType, ...]
-        | ArrayAPI,
+        | Array,
         value: float | bool | Self,
         /,
     ) -> None:

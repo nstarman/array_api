@@ -4,23 +4,23 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
-    from array_api.dtype import DType
+    from array_api._array import Array
+    from array_api._dtype import DType
 
 
-__all__: list[str] = []
+__all__ = ["max", "mean", "min", "prod", "std", "sum", "var"]
 
 
 def max(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the maximum value of the input array ``x``.
 
@@ -69,12 +69,12 @@ def max(
 
 
 def mean(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the arithmetic mean of the input array ``x``.
 
@@ -124,12 +124,12 @@ def mean(
 
 
 def min(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the minimum value of the input array ``x``.
 
@@ -178,13 +178,13 @@ def min(
 
 
 def prod(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     dtype: DType | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the product of input array ``x`` elements.
 
@@ -254,13 +254,13 @@ def prod(
 
 
 def std(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     correction: float = 0.0,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the standard deviation of the input array ``x``.
 
@@ -322,21 +322,18 @@ def std(
             data type.
     """
     return get_namespace(x).std(
-        x,
-        axis=axis,
-        correction=correction,
-        keepdims=keepdims,
+        x, axis=axis, correction=correction, keepdims=keepdims
     )
 
 
 def sum(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     dtype: DType | None = None,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the sum of the input array ``x``.
 
@@ -406,13 +403,13 @@ def sum(
 
 
 def var(
-    x: ArrayAPI,
+    x: Array,
     /,
     *,
     axis: int | tuple[int, ...] | None = None,
     correction: float = 0.0,
     keepdims: bool = False,
-) -> ArrayAPI:
+) -> Array:
     """
     Calculates the variance of the input array ``x``.
 
@@ -471,8 +468,5 @@ def var(
         default floating-point data type.
     """
     return get_namespace(x).var(
-        x,
-        axis=axis,
-        correction=correction,
-        keepdims=keepdims,
+        x, axis=axis, correction=correction, keepdims=keepdims
     )

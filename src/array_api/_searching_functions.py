@@ -4,21 +4,17 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
+    from array_api._array import Array
 
-__all__: list[str] = []
+__all__ = ["argmax", "argmin", "nonzero"]
 
 
 def argmax(
-    x: ArrayAPI,
-    /,
-    *,
-    axis: int | None = None,
-    keepdims: bool = False,
-) -> ArrayAPI:
+    x: Array, /, *, axis: int | None = None, keepdims: bool = False
+) -> Array:
     """
     Returns the indices of the maximum values along a specified axis. When
     the maximum value occurs multiple times, only the indices corresponding
@@ -52,12 +48,8 @@ def argmax(
 
 
 def argmin(
-    x: ArrayAPI,
-    /,
-    *,
-    axis: int | None = None,
-    keepdims: bool = False,
-) -> ArrayAPI:
+    x: Array, /, *, axis: int | None = None, keepdims: bool = False
+) -> Array:
     """
     Returns the indices of the minimum values along a specified axis. When
     the minimum value occurs multiple times, only the indices corresponding
@@ -90,7 +82,7 @@ def argmin(
     return get_namespace(x).argmin(x, axis=axis, keepdims=keepdims)
 
 
-def nonzero(x: ArrayAPI, /) -> tuple[ArrayAPI, ...]:
+def nonzero(x: Array, /) -> tuple[Array, ...]:
     """
     Returns the indices of the array elements which are non-zero.
 
@@ -122,7 +114,7 @@ def nonzero(x: ArrayAPI, /) -> tuple[ArrayAPI, ...]:
     return get_namespace(x).nonzero(x)
 
 
-def where(condition: ArrayAPI, x1: ArrayAPI, x2: ArrayAPI, /) -> ArrayAPI:
+def where(condition: Array, x1: Array, x2: Array, /) -> Array:
     """
     Returns elements chosen from ``x1`` or ``x2`` depending on
     ``condition``.

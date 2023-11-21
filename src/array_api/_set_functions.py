@@ -4,18 +4,15 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from array_api.namespace import get_namespace
+from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
-    from array_api.array import ArrayAPI
+    from array_api._array import Array
 
-__all__: list[str] = []
+__all__ = ["unique_all", "unique_counts", "unique_inverse", "unique_values"]
 
 
-def unique_all(
-    x: ArrayAPI,
-    /,
-) -> tuple[ArrayAPI, ArrayAPI, ArrayAPI, ArrayAPI]:
+def unique_all(x: Array, /) -> tuple[Array, Array, Array, Array]:
     """
     Returns the unique elements of an input array ``x``, the first occurring
     indices for each unique element in ``x``, the indices from the set of unique
@@ -88,7 +85,7 @@ def unique_all(
     return get_namespace(x).unique_all(x)
 
 
-def unique_counts(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
+def unique_counts(x: Array, /) -> tuple[Array, Array]:
     """
     Returns the unique elements of an input array ``x`` and the corresponding
     counts for each unique element in ``x``.
@@ -146,7 +143,7 @@ def unique_counts(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
     return get_namespace(x).unique_counts(x)
 
 
-def unique_inverse(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
+def unique_inverse(x: Array, /) -> tuple[Array, Array]:
     """
     Returns the unique elements of an input array ``x`` and the indices from the
     set of unique elements that reconstruct ``x``.
@@ -205,7 +202,7 @@ def unique_inverse(x: ArrayAPI, /) -> tuple[ArrayAPI, ArrayAPI]:
     return get_namespace(x).unique_inverse(x)
 
 
-def unique_values(x: ArrayAPI, /) -> ArrayAPI:
+def unique_values(x: Array, /) -> Array:
     """
     Returns the unique elements of an input array ``x``.
 
