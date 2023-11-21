@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -2061,3 +2061,232 @@ def trunc(x: Array, /) -> Array:
         returned array must have the same data type as ``x``.
     """
     return get_namespace(x).trunc(x)
+
+
+###############################################################################
+
+
+class HasElementwiseFunctions(Protocol):
+    @staticmethod
+    def abs(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def acos(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def acosh(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def add(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def asin(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def asinh(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def atan(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def atan2(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def atanh(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def bitwise_and(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def bitwise_left_shift(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def bitwise_invert(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def bitwise_or(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def bitwise_right_shift(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def bitwise_xor(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def ceil(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def cos(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def cosh(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def divide(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def equal(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def exp(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def expm1(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def floor(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def floor_divide(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def greater(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def greater_equal(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def isfinite(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def isinf(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def isnan(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def less(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def less_equal(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def log(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def log1p(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def log2(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def log10(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def logaddexp(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def logical_and(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def logical_not(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def logical_or(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def logical_xor(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def multiply(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def negative(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def not_equal(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def positive(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def pow(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def remainder(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def round(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def sign(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def sin(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def sinh(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def square(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def sqrt(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def subtract(x1: Array, x2: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def tan(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def tanh(x: Array, /) -> Array:
+        ...
+
+    @staticmethod
+    def trunc(x: Array, /) -> Array:
+        ...

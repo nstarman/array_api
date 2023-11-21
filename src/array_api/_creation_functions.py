@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from array_api._array import Array
     from array_api._device import Device
     from array_api._dtype import DType
+    from array_api._types import NestedSequence, SupportsBufferProtocol
 
 __all__ = [
     "empty_like",
@@ -263,3 +264,137 @@ def zeros_like(
         an array having the same shape as ``x`` and filled with zeros.
     """
     return get_namespace(x).zeros_like(x, dtype=dtype, device=device)
+
+
+###############################################################################
+
+
+class HasCreationFunctions(Protocol):
+    @staticmethod
+    def arange(
+        start: float,
+        /,
+        stop: float | None = None,
+        step: float = 1,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def asarray(
+        obj: Array
+        | bool
+        | float
+        | NestedSequence[bool | float]
+        | SupportsBufferProtocol,
+        /,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+        copy: bool | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def empty_like(
+        x: Array, /, *, dtype: DType | None = None, device: Device | None = None
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def eye(
+        n_rows: int,
+        n_cols: int | None = None,
+        /,
+        *,
+        k: int = 0,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def from_dlpack(x: object, /) -> Array:
+        ...
+
+    @staticmethod
+    def full(
+        shape: int | tuple[int, ...],
+        fill_value: float,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def full_like(
+        x: Array,
+        /,
+        fill_value: float,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def linspace(
+        start: float,
+        stop: float,
+        /,
+        num: int,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+        endpoint: bool = True,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def meshgrid(*arrays: Array, indexing: str = "xy") -> list[Array]:
+        ...
+
+    @staticmethod
+    def ones(
+        shape: int | tuple[int, ...],
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def ones_like(
+        x: Array,
+        /,
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def tril(x: Array, /, *, k: int = 0) -> Array:
+        ...
+
+    @staticmethod
+    def triu(x: Array, /, *, k: int = 0) -> Array:
+        ...
+
+    @staticmethod
+    def zeros(
+        shape: int | tuple[int, ...],
+        *,
+        dtype: DType | None = None,
+        device: Device | None = None,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def zeros_like(
+        x: Array, /, *, dtype: DType | None = None, device: Device | None = None
+    ) -> Array:
+        ...

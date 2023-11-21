@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
@@ -140,3 +140,28 @@ def where(condition: Array, x1: Array, x2: Array, /) -> Array:
         ``x1`` and ``x2``.
     """
     return get_namespace(condition, x1, x2).where(condition, x1, x2)
+
+
+###############################################################################
+
+
+class HasSearchingFunctions(Protocol):
+    @staticmethod
+    def argmax(
+        x: Array, /, *, axis: int | None = None, keepdims: bool = False
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def argmin(
+        x: Array, /, *, axis: int | None = None, keepdims: bool = False
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def nonzero(x: Array, /) -> tuple[Array, ...]:
+        ...
+
+    @staticmethod
+    def where(condition: Array, x1: Array, x2: Array, /) -> Array:
+        ...

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
     from array_api._device import Device
     from array_api._dtype import DType
-    from array_api._namespace import ArrayAPINamespace
+    from array_api._namespace_api import ArrayAPINamespace
     from array_api._types import PyCapsule
 
 

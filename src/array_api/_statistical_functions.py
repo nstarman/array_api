@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
     from array_api._array import Array
     from array_api._dtype import DType
+    from array_api._types import AxisT
 
 
 __all__ = ["max", "mean", "min", "prod", "std", "sum", "var"]
@@ -470,3 +471,82 @@ def var(
     return get_namespace(x).var(
         x, axis=axis, correction=correction, keepdims=keepdims
     )
+
+
+####################################################################################################
+
+
+class HasStatisticalFunctions(Protocol):
+    @staticmethod
+    def max(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def mean(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def min(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def prod(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        dtype: DType | None = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def std(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        correction: float = 0.0,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def sum(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        dtype: DType | None = None,
+        keepdims: bool = False,
+    ) -> Array:
+        ...
+
+    @staticmethod
+    def var(
+        x: Array,
+        /,
+        *,
+        axis: AxisT = None,
+        correction: float = 0.0,
+        keepdims: bool = False,
+    ) -> Array:
+        ...

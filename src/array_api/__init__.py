@@ -12,6 +12,7 @@ from array_api import (
     _linear_algebra_functions,
     _manipulation_functions,
     _namespace,
+    _namespace_api,
     _searching_functions,
     _set_functions,
     _sorting_functions,
@@ -29,6 +30,7 @@ from array_api._elementwise_functions import *
 from array_api._linear_algebra_functions import *
 from array_api._manipulation_functions import *
 from array_api._namespace import *
+from array_api._namespace_api import *
 from array_api._searching_functions import *
 from array_api._set_functions import *
 from array_api._sorting_functions import *
@@ -56,3 +58,4 @@ __all__ += _array.__all__
 __all__ += _device.__all__
 __all__ += _dtype.__all__
 __all__ += _namespace.__all__
+__all__ += _namespace_api.__all__

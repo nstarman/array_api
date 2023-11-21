@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Final
+from typing import TYPE_CHECKING, Any, Final, Protocol
 
 from array_api._namespace import get_namespace
 
 if TYPE_CHECKING:
     from array_api._array import Array
     from array_api._dtype import DType
+    from array_api._types import finfo_object, iinfo_object
 
 __all__ = ["astype", "broadcast_arrays", "broadcast_to"]
 
@@ -97,3 +98,36 @@ def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array:
         ``x``.
     """
     return get_namespace(x).broadcast_to(x, shape=shape)
+
+
+###############################################################################
+
+
+class HasDataTypeFunctions(Protocol):
+    @staticmethod
+    def astype(x: Array, dtype: DType, /, *, copy: bool = True) -> Array:
+        ...
+
+    @staticmethod
+    def broadcast_arrays(*arrays: Array) -> list[Array]:
+        ...
+
+    @staticmethod
+    def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array:
+        ...
+
+    @staticmethod
+    def can_cast(from_: DType | Array, to: DType, /) -> bool:
+        ...
+
+    @staticmethod
+    def finfo(type: DType | Array, /) -> finfo_object:
+        ...
+
+    @staticmethod
+    def iinfo(type: DType | Array, /) -> iinfo_object:
+        ...
+
+    @staticmethod
+    def result_type(*arrays_and_dtypes: Array | DType) -> DType:
+        ...
