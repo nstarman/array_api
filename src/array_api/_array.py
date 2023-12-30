@@ -1519,6 +1519,9 @@ class Array(Protocol):
         """
         ...
 
+    def __rtruediv__(self: Self, other: float | Self, /) -> Self:
+        ...
+
     def __xor__(self: Self, other: int | bool | Self, /) -> Self:
         """
         Evaluates ``self_i ^ other_i`` for each element of an array instance
