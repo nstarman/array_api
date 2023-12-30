@@ -1,3 +1,7 @@
+[build-system]
+  requires = ["hatchling", "hatch-vcs"]
+  build-backend = "hatchling.build"
+
 [project]
   name = "array_api"
   version = "0.1.0"
@@ -48,20 +52,14 @@
   documentation = "https://github.com/nstarman/array_api"
 
 
-[build-system]
-  requires = [
-    "mypy>=0.971",
-    "setuptools>=45.0",
-    "setuptools_scm[toml]>=6.3.1",
-    "wheel",
-  ]
+[tool.hatch]
+  version.source = "vcs"
+  build.hooks.vcs.version-file = "src/array_api/_version.py"
+  metadata.allow-direct-references = true
 
-  build-backend = 'setuptools.build_meta'
-
-[tool.setuptools]
-  package-dir = {"" = "src"}
-
-[tool.setuptools_scm]
+[tool.hatch.env.default]
+  features = ["test"]
+  scripts.test = "pytest {args}"
 
 
 [tool.cibuildwheel]
