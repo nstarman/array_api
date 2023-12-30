@@ -398,3 +398,4 @@ dmypy.json
 # Mac stuff
 .DS_Store
 /Discussion.md
+/src/array_api/_version.py
