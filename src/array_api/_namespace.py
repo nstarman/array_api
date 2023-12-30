@@ -4,17 +4,23 @@ from __future__ import annotations
 
 __all__ = ["get_namespace"]
 
-from typing import TYPE_CHECKING, Any
-
-from array_api._array import Array
+from typing import TYPE_CHECKING, Any, Protocol, runtime_checkable
 
 if TYPE_CHECKING:
     from array_api._namespace_api import ArrayAPINamespace
 
 
+@runtime_checkable
+class BaseTrait(Protocol):
+    def __array_namespace__(
+        self, *, api_version: str | None = ...
+    ) -> ArrayAPINamespace:
+        ...
+
+
 def get_namespace(
     *xs: Any,  # noqa: ANN401
-    array_traits: type | tuple[type, ...] = Array,
+    array_traits: type | tuple[type, ...] = BaseTrait,
     api_version: str | None = None,
 ) -> ArrayAPINamespace:
     """
