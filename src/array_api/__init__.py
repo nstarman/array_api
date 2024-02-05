@@ -1,6 +1,5 @@
 """Array API."""
 
-
 from array_api import (
     _array,
     _constants,

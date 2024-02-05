@@ -46,6 +46,7 @@ def empty_like(
     out: array
         an array having the same shape as ``x`` and containing uninitialized
         data.
+
     """
     return get_namespace(x).empty_like(x, dtype=dtype, device=device)
 
@@ -94,6 +95,7 @@ def full_like(
     out: array
         an array having the same shape as ``x`` and where every element is equal
         to ``fill_value``.
+
     """
     return get_namespace(x).full_like(
         x, fill_value=fill_value, dtype=dtype, device=device
@@ -138,6 +140,7 @@ def meshgrid(*arrays: Array, indexing: str = "xy") -> list[Array]:
         ``(N, M, P)``.
 
         Each returned array should have the same data type as the input arrays.
+
     """
     return get_namespace(*arrays).meshgrid(*arrays, indexing=indexing)
 
@@ -164,6 +167,7 @@ def ones_like(
     -------
     out: array
         an array having the same shape as ``x`` and filled with ones.
+
     """
     return get_namespace(x).ones_like(x, dtype=dtype, device=device)
 
@@ -200,6 +204,7 @@ def tril(x: Array, /, *, k: int = 0) -> Array:
         must have the same shape and data type as ``x``. All elements above the
         specified diagonal ``k`` must be zeroed. The returned array should be
         allocated on the same device as ``x``.
+
     """
     return get_namespace(x).tril(x, k=k)
 
@@ -236,6 +241,7 @@ def triu(x: Array, /, *, k: int = 0) -> Array:
         must have the same shape and data type as ``x``. All elements below the
         specified diagonal ``k`` must be zeroed. The returned array should be
         allocated on the same device as ``x``.
+
     """
     return get_namespace(x).triu(x, k=k)
 
@@ -262,6 +268,7 @@ def zeros_like(
     -------
     out: array
         an array having the same shape as ``x`` and filled with zeros.
+
     """
     return get_namespace(x).zeros_like(x, dtype=dtype, device=device)
 
@@ -279,29 +286,28 @@ class HasCreationFunctions(Protocol):
         *,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def asarray(
-        obj: Array
-        | bool
-        | float
-        | NestedSequence[bool | float]
-        | SupportsBufferProtocol,
+        obj: (
+            Array
+            | bool
+            | float
+            | NestedSequence[bool | float]
+            | SupportsBufferProtocol
+        ),
         /,
         *,
         dtype: DType | None = None,
         device: Device | None = None,
         copy: bool | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def empty_like(
         x: Array, /, *, dtype: DType | None = None, device: Device | None = None
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def eye(
@@ -312,12 +318,10 @@ class HasCreationFunctions(Protocol):
         k: int = 0,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def from_dlpack(x: object, /) -> Array:
-        ...
+    def from_dlpack(x: object, /) -> Array: ...
 
     @staticmethod
     def full(
@@ -326,8 +330,7 @@ class HasCreationFunctions(Protocol):
         *,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def full_like(
@@ -337,8 +340,7 @@ class HasCreationFunctions(Protocol):
         *,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def linspace(
@@ -350,12 +352,10 @@ class HasCreationFunctions(Protocol):
         dtype: DType | None = None,
         device: Device | None = None,
         endpoint: bool = True,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def meshgrid(*arrays: Array, indexing: str = "xy") -> list[Array]:
-        ...
+    def meshgrid(*arrays: Array, indexing: str = "xy") -> list[Array]: ...
 
     @staticmethod
     def ones(
@@ -363,8 +363,7 @@ class HasCreationFunctions(Protocol):
         *,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def ones_like(
@@ -373,16 +372,13 @@ class HasCreationFunctions(Protocol):
         *,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def tril(x: Array, /, *, k: int = 0) -> Array:
-        ...
+    def tril(x: Array, /, *, k: int = 0) -> Array: ...
 
     @staticmethod
-    def triu(x: Array, /, *, k: int = 0) -> Array:
-        ...
+    def triu(x: Array, /, *, k: int = 0) -> Array: ...
 
     @staticmethod
     def zeros(
@@ -390,11 +386,9 @@ class HasCreationFunctions(Protocol):
         *,
         dtype: DType | None = None,
         device: Device | None = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def zeros_like(
         x: Array, /, *, dtype: DType | None = None, device: Device | None = None
-    ) -> Array:
-        ...
+    ) -> Array: ...

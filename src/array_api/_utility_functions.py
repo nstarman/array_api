@@ -63,6 +63,7 @@ def all(
         result; otherwise, the returned array must be a non-zero-dimensional
         array containing the test results. The returned array must have a data
         type of ``bool``.
+
     """
     return get_namespace(x).all(x, axis=axis, keepdims=keepdims)
 
@@ -117,6 +118,7 @@ def any(
         result; otherwise, the returned array must be a non-zero-dimensional
         array containing the test results. The returned array must have a data
         type of ``bool``.
+
     """
     return get_namespace(x).any(x, axis=axis, keepdims=keepdims)
 
@@ -132,8 +134,7 @@ class HasUtilityFunctions(Protocol):
         *,
         axis: AxisT = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def any(
@@ -142,5 +143,4 @@ class HasUtilityFunctions(Protocol):
         *,
         axis: AxisT = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...

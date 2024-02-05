@@ -81,6 +81,7 @@ def unique_all(x: Array, /) -> tuple[Array, Array, Array, Array]:
 
             The order of unique elements is not specified and may vary between
             implementations.
+
     """
     return get_namespace(x).unique_all(x)
 
@@ -139,6 +140,7 @@ def unique_counts(x: Array, /) -> tuple[Array, Array]:
 
             The order of unique elements is not specified and may vary between
             implementations.
+
     """
     return get_namespace(x).unique_counts(x)
 
@@ -198,6 +200,7 @@ def unique_inverse(x: Array, /) -> tuple[Array, Array]:
 
             The order of unique elements is not specified and may vary between
             implementations.
+
     """
     return get_namespace(x).unique_inverse(x)
 
@@ -245,6 +248,7 @@ def unique_values(x: Array, /) -> Array:
 
             The order of unique elements is not specified and may vary between
             implementations.
+
     """
     return get_namespace(x).unique_values(x)
 
@@ -254,17 +258,13 @@ def unique_values(x: Array, /) -> Array:
 
 class HasSetFunctions(Protocol):
     @staticmethod
-    def unique_all(x: Array, /) -> tuple[Array, Array, Array, Array]:
-        ...
+    def unique_all(x: Array, /) -> tuple[Array, Array, Array, Array]: ...
 
     @staticmethod
-    def unique_counts(x: Array, /) -> tuple[Array, Array]:
-        ...
+    def unique_counts(x: Array, /) -> tuple[Array, Array]: ...
 
     @staticmethod
-    def unique_inverse(x: Array, /) -> tuple[Array, Array]:
-        ...
+    def unique_inverse(x: Array, /) -> tuple[Array, Array]: ...
 
     @staticmethod
-    def unique_values(x: Array, /) -> Array:
-        ...
+    def unique_values(x: Array, /) -> Array: ...

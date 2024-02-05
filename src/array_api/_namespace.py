@@ -14,8 +14,7 @@ if TYPE_CHECKING:
 class BaseTrait(Protocol):
     def __array_namespace__(
         self, *, api_version: str | None = ...
-    ) -> ArrayAPINamespace:
-        ...
+    ) -> ArrayAPINamespace: ...
 
 
 def get_namespace(
@@ -49,6 +48,7 @@ def get_namespace(
     ValueError
         If none of the inputs are array API conformant.  If the inputs are from
         multiple array API namespaces.
+
     """
     # `xs` contains one or more arrays.
     namespaces: set[ArrayAPINamespace] = {

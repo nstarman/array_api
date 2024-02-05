@@ -43,6 +43,7 @@ def argmax(
         non-zero-dimensional array containing the indices of the maximum
         values. The returned array must have be the default array index data
         type.
+
     """
     return get_namespace(x).argmax(x, axis=axis, keepdims=keepdims)
 
@@ -78,6 +79,7 @@ def argmin(
         non-zero-dimensional array containing the indices of the minimum
         values. The returned array must have the default array index data
         type.
+
     """
     return get_namespace(x).argmin(x, axis=axis, keepdims=keepdims)
 
@@ -110,6 +112,7 @@ def nonzero(x: Array, /) -> tuple[Array, ...]:
         containing the indices of the non-zero elements in that dimension.
         The indices must be returned in row-major, C-style order. The
         returned array must have the default array index data type.
+
     """
     return get_namespace(x).nonzero(x)
 
@@ -138,6 +141,7 @@ def where(condition: Array, x1: Array, x2: Array, /) -> Array:
         and elements from ``x2`` elsewhere. The returned array must have a
         data type determined by :ref:`type-promotion` rules with the arrays
         ``x1`` and ``x2``.
+
     """
     return get_namespace(condition, x1, x2).where(condition, x1, x2)
 
@@ -149,19 +153,15 @@ class HasSearchingFunctions(Protocol):
     @staticmethod
     def argmax(
         x: Array, /, *, axis: int | None = None, keepdims: bool = False
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def argmin(
         x: Array, /, *, axis: int | None = None, keepdims: bool = False
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def nonzero(x: Array, /) -> tuple[Array, ...]:
-        ...
+    def nonzero(x: Array, /) -> tuple[Array, ...]: ...
 
     @staticmethod
-    def where(condition: Array, x1: Array, x2: Array, /) -> Array:
-        ...
+    def where(condition: Array, x1: Array, x2: Array, /) -> Array: ...

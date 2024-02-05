@@ -54,6 +54,7 @@ def concat(
 
             This specification leaves type promotion between data type families
             (i.e., ``intxx`` and ``floatxx``) unspecified.
+
     """
     return get_namespace(*arrays).concat(arrays, axis=axis)
 
@@ -83,6 +84,7 @@ def expand_dims(x: Array, /, *, axis: int = 0) -> Array:
     -------
     out: array
         an expanded output array having the same data type as ``x``.
+
     """
     return get_namespace(x).expand_dims(x, axis=axis)
 
@@ -107,6 +109,7 @@ def flip(x: Array, /, *, axis: AxisT = None) -> Array:
     out: array
         an output array having the same data type and shape as ``x`` and whose
         elements, relative to ``x``, are reordered.
+
     """
     return get_namespace(x).flip(x, axis=axis)
 
@@ -128,6 +131,7 @@ def permute_dims(x: Array, /, axes: tuple[int, ...]) -> Array:
     out: array
         an array containing the axes permutation. The returned array must have
         the same data type as ``x``.
+
     """
     return get_namespace(x).permute_dims(x, axes=axes)
 
@@ -162,6 +166,7 @@ def reshape(
     -------
     out: array
         an output array having the same data type and elements as ``x``.
+
     """
     return get_namespace(x).reshape(x, shape=shape, copy=copy)
 
@@ -198,6 +203,7 @@ def roll(
     out: array
         an output array having the same data type as ``x`` and whose elements,
         relative to ``x``, are shifted.
+
     """
     return get_namespace(x).roll(x, shift=shift, axis=axis)
 
@@ -218,6 +224,7 @@ def squeeze(x: Array, /, axis: int | tuple[int, ...]) -> Array:
     -------
     out: array
         an output array having the same data type and elements as ``x``.
+
     """
     return get_namespace(x).squeeze(x, axis=axis)
 
@@ -261,6 +268,7 @@ def stack(
 
             This specification leaves type promotion between data type families
             (i.e., ``intxx`` and ``floatxx``) unspecified.
+
     """
     return get_namespace(*arrays).stack(arrays, axis=axis)
 
@@ -272,26 +280,21 @@ class HasManipulationFunctions(Protocol):
     @staticmethod
     def concat(
         arrays: tuple[Array, ...] | list[Array], /, *, axis: int | None = 0
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def expand_dims(x: Array, /, *, axis: int = 0) -> Array:
-        ...
+    def expand_dims(x: Array, /, *, axis: int = 0) -> Array: ...
 
     @staticmethod
-    def flip(x: Array, /, *, axis: AxisT = None) -> Array:
-        ...
+    def flip(x: Array, /, *, axis: AxisT = None) -> Array: ...
 
     @staticmethod
-    def permute_dims(x: Array, /, axes: tuple[int, ...]) -> Array:
-        ...
+    def permute_dims(x: Array, /, axes: tuple[int, ...]) -> Array: ...
 
     @staticmethod
     def reshape(
         x: Array, /, shape: tuple[int, ...], *, copy: bool | None = None
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def roll(
@@ -300,15 +303,12 @@ class HasManipulationFunctions(Protocol):
         shift: int | tuple[int, ...],
         *,
         axis: AxisT = None,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def squeeze(x: Array, /, axis: int | tuple[int, ...]) -> Array:
-        ...
+    def squeeze(x: Array, /, axis: int | tuple[int, ...]) -> Array: ...
 
     @staticmethod
     def stack(
         arrays: tuple[Array, ...] | list[Array], /, *, axis: int = 0
-    ) -> Array:
-        ...
+    ) -> Array: ...
