@@ -31,6 +31,7 @@ class Array(Protocol):
         -------
         out: dtype
             array data type.
+
         """
         ...
 
@@ -43,6 +44,7 @@ class Array(Protocol):
         -------
         out: device
             a ``device`` object (see :ref:`device-support`).
+
         """
         ...
 
@@ -62,6 +64,7 @@ class Array(Protocol):
             ``(..., M, N)``, the returned array must have shape ``(..., N,
             M)``). The returned array must have the same data type as the
             original array.
+
         """
         ...
 
@@ -74,6 +77,7 @@ class Array(Protocol):
         -------
         out: int
             number of array dimensions (axes).
+
         """
         ...
 
@@ -103,6 +107,7 @@ class Array(Protocol):
            library returns a custom shape object, the object must be immutable,
            must support indexing for dimension retrieval, and must behave
            similarly to a tuple.
+
         """
         ...
 
@@ -126,6 +131,7 @@ class Array(Protocol):
 
            For array libraries having graph-based computational models, an array
            may have unknown dimensions due to data-dependent operations.
+
         """
         ...
 
@@ -155,6 +161,7 @@ class Array(Protocol):
            on batches of matrices; et cetera). In order to reverse all axes, one
            is recommended to use the functional ``permute_dims`` interface found
            in this specification.
+
         """
         ...
 
@@ -194,6 +201,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.abs`.
+
         """
         ...
 
@@ -266,6 +274,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.add`.
+
         """
         ...
 
@@ -294,6 +303,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.bitwise_and`.
+
         """
         ...
 
@@ -322,6 +332,7 @@ class Array(Protocol):
             top-level function defined in the specification as an attribute. It
             may contain other public names as well, but it is recommended to
             only include those names that are part of the specification.
+
         """
         ...
 
@@ -339,6 +350,7 @@ class Array(Protocol):
         out: bool
             a Python ``bool`` object representing the single element of the
             array.
+
         """
         ...
 
@@ -421,6 +433,7 @@ class Array(Protocol):
         capsule: PyCapsule
             a DLPack capsule for the array. See :ref:`data-interchange` for
             details.
+
         """
         ...
 
@@ -444,6 +457,7 @@ class Array(Protocol):
 
               CPU = 1 CUDA = 2 CPU_PINNED = 3 OPENCL = 4 VULKAN = 7 METAL = 8
               VPI = 9 ROCM = 10
+
         """
         ...
 
@@ -472,6 +486,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.equal`.
+
         """
         ...
 
@@ -491,6 +506,7 @@ class Array(Protocol):
         out: float
             a Python ``float`` object representing the single element of the
             array instance.
+
         """
         ...
 
@@ -619,6 +635,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.floor_divide`.
+
         """
         ...
 
@@ -647,16 +664,19 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.greater_equal`.
+
         """
         ...
 
     def __getitem__(
         self: Self,
-        key: int
-        | slice
-        | EllipsisType
-        | tuple[int | slice | EllipsisType, ...]
-        | Self,
+        key: (
+            int
+            | slice
+            | EllipsisType
+            | tuple[int | slice | EllipsisType, ...]
+            | Self
+        ),
         /,
     ) -> Self:
         """
@@ -674,6 +694,7 @@ class Array(Protocol):
         out: array
             an array containing the accessed value(s). The returned array must
             have the same data type as ``self``.
+
         """
         ...
 
@@ -702,6 +723,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.greater`.
+
         """
         ...
 
@@ -725,6 +747,7 @@ class Array(Protocol):
         out: int
             a Python ``int`` object representing the single element of the array
             instance.
+
         """
         ...
 
@@ -742,6 +765,7 @@ class Array(Protocol):
         out: int
             a Python ``int`` object representing the single element of the array
             instance.
+
         """
         ...
 
@@ -765,6 +789,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.bitwise_invert`.
+
         """
         ...
 
@@ -793,6 +818,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.less_equal`.
+
         """
         ...
 
@@ -822,6 +848,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.bitwise_left_shift`.
+
         """
         ...
 
@@ -850,6 +877,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.less`.
+
         """
         ...
 
@@ -955,6 +983,7 @@ class Array(Protocol):
           one-dimensional array having shape ``(L,)``, and ``K != L``.
         - if ``self`` is an array having shape ``(..., M, K)``, ``other`` is an
           array having shape ``(..., L, N)``, and ``K != L``.
+
         """
         ...
 
@@ -1046,6 +1075,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.remainder`.
+
         """
         ...
 
@@ -1114,6 +1144,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.multiply`.
+
         """
         ...
 
@@ -1142,6 +1173,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.not_equal`.
+
         """
         ...
 
@@ -1172,6 +1204,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.negative`.
+
         """
         ...
 
@@ -1200,6 +1233,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.bitwise_or`.
+
         """
         ...
 
@@ -1224,6 +1258,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.positive`.
+
         """
         ...
 
@@ -1322,6 +1357,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.pow`.
+
         """
         ...
 
@@ -1351,16 +1387,19 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.bitwise_right_shift`.
+
         """
         ...
 
     def __setitem__(
         self: Self,
-        key: int
-        | slice
-        | EllipsisType
-        | tuple[int | slice | EllipsisType, ...]
-        | Array,
+        key: (
+            int
+            | slice
+            | EllipsisType
+            | tuple[int | slice | EllipsisType, ...]
+            | Array
+        ),
         value: float | bool | Self,
         /,
     ) -> None:
@@ -1389,6 +1428,7 @@ class Array(Protocol):
            When ``value`` is an ``array`` of a different data type than
            ``self``, how values are cast to the data type of ``self`` is
            implementation defined.
+
         """
         ...
 
@@ -1420,6 +1460,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.subtract`.
+
         """
         ...
 
@@ -1516,11 +1557,11 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.divide`.
+
         """
         ...
 
-    def __rtruediv__(self: Self, other: float | Self, /) -> Self:
-        ...
+    def __rtruediv__(self: Self, other: float | Self, /) -> Self: ...
 
     def __xor__(self: Self, other: int | bool | Self, /) -> Self:
         """
@@ -1547,6 +1588,7 @@ class Array(Protocol):
            Element-wise results must equal the results returned by the
            equivalent element-wise function
            :func:`~array_api.elementwise_functions.bitwise_xor`.
+
         """
         ...
 
@@ -1589,5 +1631,6 @@ class Array(Protocol):
            Accordingly, if synchronization is required to guarantee data safety,
            this must be clearly explained in a conforming library's
            documentation.
+
         """
         ...

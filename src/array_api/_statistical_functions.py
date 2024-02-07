@@ -65,6 +65,7 @@ def max(
         zero-dimensional array containing the maximum value; otherwise, a
         non-zero-dimensional array containing the maximum values. The returned
         array must have the same data type as ``x``.
+
     """
     return get_namespace(x).max(x, axis=axis, keepdims=keepdims)
 
@@ -120,6 +121,7 @@ def mean(
             is implementation-defined, if the input array ``x`` has an integer
             data type, the returned array must have the default floating-point
             data type.
+
     """
     return get_namespace(x).mean(x, axis=axis, keepdims=keepdims)
 
@@ -174,6 +176,7 @@ def min(
         zero-dimensional array containing the minimum value; otherwise, a
         non-zero-dimensional array containing the minimum values. The returned
         array must have the same data type as ``x``.
+
     """
     return get_namespace(x).min(x, axis=axis, keepdims=keepdims)
 
@@ -250,6 +253,7 @@ def prod(
         array containing the product; otherwise, a non-zero-dimensional array
         containing the products. The returned array must have a data type as
         described by the ``dtype`` parameter above.
+
     """
     return get_namespace(x).prod(x, axis=axis, dtype=dtype, keepdims=keepdims)
 
@@ -321,6 +325,7 @@ def std(
             is implementation-defined, if the input array ``x`` has an integer
             data type, the returned array must have the default floating-point
             data type.
+
     """
     return get_namespace(x).std(
         x, axis=axis, correction=correction, keepdims=keepdims
@@ -399,6 +404,7 @@ def sum(
         containing the sum; otherwise, an array containing the sums. The
         returned array must have a data type as described by the ``dtype``
         parameter above.
+
     """
     return get_namespace(x).sum(x, axis=axis, dtype=dtype, keepdims=keepdims)
 
@@ -467,6 +473,7 @@ def var(
         While mixed data type promotion is implementation-defined, if the input
         array ``x`` has an integer data type, the returned array must have the
         default floating-point data type.
+
     """
     return get_namespace(x).var(
         x, axis=axis, correction=correction, keepdims=keepdims
@@ -484,8 +491,7 @@ class HasStatisticalFunctions(Protocol):
         *,
         axis: AxisT = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def mean(
@@ -494,8 +500,7 @@ class HasStatisticalFunctions(Protocol):
         *,
         axis: AxisT = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def min(
@@ -504,8 +509,7 @@ class HasStatisticalFunctions(Protocol):
         *,
         axis: AxisT = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def prod(
@@ -515,8 +519,7 @@ class HasStatisticalFunctions(Protocol):
         axis: AxisT = None,
         dtype: DType | None = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def std(
@@ -526,8 +529,7 @@ class HasStatisticalFunctions(Protocol):
         axis: AxisT = None,
         correction: float = 0.0,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def sum(
@@ -537,8 +539,7 @@ class HasStatisticalFunctions(Protocol):
         axis: AxisT = None,
         dtype: DType | None = None,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
     def var(
@@ -548,5 +549,4 @@ class HasStatisticalFunctions(Protocol):
         axis: AxisT = None,
         correction: float = 0.0,
         keepdims: bool = False,
-    ) -> Array:
-        ...
+    ) -> Array: ...

@@ -4,6 +4,7 @@ Types for annotations.
 The type variables should be replaced with the actual types for a given
 library, e.g., for NumPy TypeVar('array') would be replaced with ndarray.
 """
+
 from __future__ import annotations
 
 __all__ = [
@@ -42,8 +43,6 @@ class iinfo_object(Protocol):  # noqa: N801
 class NestedSequence(Protocol[_T_co]):
     """Nested sequence."""
 
-    def __getitem__(self, key: int, /) -> _T_co | NestedSequence[_T_co]:
-        ...
+    def __getitem__(self, key: int, /) -> _T_co | NestedSequence[_T_co]: ...
 
-    def __len__(self, /) -> int:
-        ...
+    def __len__(self, /) -> int: ...

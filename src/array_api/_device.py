@@ -27,5 +27,6 @@ class Device(Protocol):
         -------
         out: bool
             a boolean indicating whether the device objects are equal.
+
         """
         ...

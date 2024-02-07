@@ -105,6 +105,7 @@ def matmul(x1: Array, x2: Array, /) -> Array:
         one-dimensional array having shape ``(L,)``, and ``K != L``.
     -   if ``x1`` is an array having shape ``(..., M, K)``, ``x2`` is an array
         having shape ``(..., L, N)``, and ``K != L``.
+
     """
     return get_namespace(x1, x2).matmul(x1, x2)
 
@@ -125,6 +126,7 @@ def matrix_transpose(x: Array, /) -> Array:
         an array containing the transpose for each matrix and having shape
         ``(..., N, M)``. The returned array must have the same data type as
         ``x``.
+
     """
     return get_namespace(x).matrix_transpose(x)
 
@@ -181,6 +183,7 @@ def tensordot(
         the non-contracted axes (dimensions) of the second array ``x2``. The
         returned array must have a data type determined by
         :ref:`type-promotion`.
+
     """
     xp = get_namespace(x1, x2)
     return xp.tensordot(x1, x2, axes=axes)
@@ -223,6 +226,7 @@ def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
     -   if provided an invalid ``axis``.
     -   if the size of the axis over which to compute the dot product is not
         the same for both ``x1`` and ``x2``.
+
     """
     xp = get_namespace(x1, x2)
     return xp.vecdot(x1, x2, axis=axis)
@@ -233,16 +237,13 @@ def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
 
 class HasLinearAlgebraFunctions(Protocol):
     @property
-    def linalg(self) -> ArrayAPILinAlgNamespace:
-        ...
+    def linalg(self) -> ArrayAPILinAlgNamespace: ...
 
     @staticmethod
-    def matmul(x1: Array, x2: Array, /) -> Array:
-        ...
+    def matmul(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def matrix_transpose(x: Array, /) -> Array:
-        ...
+    def matrix_transpose(x: Array, /) -> Array: ...
 
     @staticmethod
     def tensordot(
@@ -251,9 +252,7 @@ class HasLinearAlgebraFunctions(Protocol):
         /,
         *,
         axes: int | tuple[Sequence[int], Sequence[int]] = 2,
-    ) -> Array:
-        ...
+    ) -> Array: ...
 
     @staticmethod
-    def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
-        ...
+    def vecdot(x1: Array, x2: Array, /, *, axis: int = -1) -> Array: ...

@@ -42,6 +42,7 @@ def find_python_files(
     Returns
     -------
     list[Path]
+
     """
     files: list[Path] = []
 

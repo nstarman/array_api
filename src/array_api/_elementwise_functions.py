@@ -98,6 +98,7 @@ def abs(x: Array, /) -> Array:
     out: array
         an array containing the absolute value of each element in ``x``. The
         returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).abs(x)
 
@@ -129,6 +130,7 @@ def acos(x: Array, /) -> Array:
         an array containing the inverse cosine of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).acos(x)
 
@@ -160,6 +162,7 @@ def acosh(x: Array, /) -> Array:
         an array containing the inverse hyperbolic cosine of each element in
         ``x``. The returned array must have a floating-point data type
         determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).acosh(x)
 
@@ -226,6 +229,7 @@ def add(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise sums. The returned array must have
         a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).add(x1, x2)
 
@@ -258,6 +262,7 @@ def asin(x: Array, /) -> Array:
         an array containing the inverse sine of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).asin(x)
 
@@ -291,6 +296,7 @@ def asinh(x: Array, /) -> Array:
         an array containing the inverse hyperbolic sine of each element in
         ``x``. The returned array must have a floating-point data type
         determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).asinh(x)
 
@@ -325,6 +331,7 @@ def atan(x: Array, /) -> Array:
         an array containing the inverse tangent of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).atan(x)
 
@@ -457,6 +464,7 @@ def atanh(x: Array, /) -> Array:
         an array containing the inverse hyperbolic tangent of each element in
         ``x``. The returned array must have a floating-point data type
         determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).atanh(x)
 
@@ -480,6 +488,7 @@ def bitwise_and(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).bitwise_and(x1, x2)
 
@@ -504,6 +513,7 @@ def bitwise_left_shift(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).bitwise_left_shift(x1, x2)
 
@@ -522,6 +532,7 @@ def bitwise_invert(x: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have the same data type as ``x``.
+
     """
     return get_namespace(x).bitwise_invert(x)
 
@@ -545,6 +556,7 @@ def bitwise_or(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).bitwise_or(x1, x2)
 
@@ -574,6 +586,7 @@ def bitwise_right_shift(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).bitwise_right_shift(x1, x2)
 
@@ -597,6 +610,7 @@ def bitwise_xor(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).bitwise_xor(x1, x2)
 
@@ -629,6 +643,7 @@ def ceil(x: Array, /) -> Array:
     out: array
         an array containing the rounded result for each element in ``x``. The
         returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).ceil(x)
 
@@ -662,6 +677,7 @@ def cos(x: Array, /) -> Array:
         an array containing the cosine of each element in ``x``. The returned
         array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).cos(x)
 
@@ -694,6 +710,7 @@ def cosh(x: Array, /) -> Array:
         an array containing the hyperbolic cosine of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).cosh(x)
 
@@ -779,6 +796,7 @@ def divide(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a floating-point data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).divide(x1, x2)
 
@@ -802,6 +820,7 @@ def equal(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).equal(x1, x2)
 
@@ -835,6 +854,7 @@ def exp(x: Array, /) -> Array:
         an array containing the evaluated exponential function result for each
         element in ``x``. The returned array must have a floating-point data
         type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).exp(x)
 
@@ -874,6 +894,7 @@ def expm1(x: Array, /) -> Array:
         an array containing the evaluated result for each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).expm1(x)
 
@@ -906,6 +927,7 @@ def floor(x: Array, /) -> Array:
     out: array
         an array containing the rounded result for each element in ``x``. The
         returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).floor(x)
 
@@ -1026,6 +1048,7 @@ def floor_divide(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).floor_divide(x1, x2)
 
@@ -1049,6 +1072,7 @@ def greater(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).greater(x1, x2)
 
@@ -1072,6 +1096,7 @@ def greater_equal(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).greater_equal(x1, x2)
 
@@ -1092,6 +1117,7 @@ def isfinite(x: Array, /) -> Array:
         an array containing test results. An element ``out_i`` is ``True`` if
         ``x_i`` is finite and ``False`` otherwise. The returned array must have
         a data type of ``bool``.
+
     """
     return get_namespace(x).isfinite(x)
 
@@ -1112,6 +1138,7 @@ def isinf(x: Array, /) -> Array:
         an array containing test results. An element ``out_i`` is ``True`` if
         ``x_i`` is either positive or negative infinity and ``False`` otherwise.
         The returned array must have a data type of ``bool``.
+
     """
     return get_namespace(x).isinf(x)
 
@@ -1132,6 +1159,7 @@ def isnan(x: Array, /) -> Array:
         an array containing test results. An element ``out_i`` is ``True`` if
         ``x_i`` is ``NaN`` and ``False`` otherwise. The returned array should
         have a data type of ``bool``.
+
     """
     return get_namespace(x).isnan(x)
 
@@ -1155,6 +1183,7 @@ def less(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).less(x1, x2)
 
@@ -1178,6 +1207,7 @@ def less_equal(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).less_equal(x1, x2)
 
@@ -1210,6 +1240,7 @@ def log(x: Array, /) -> Array:
         an array containing the evaluated natural logarithm for each element in
         ``x``. The returned array must have a floating-point data type
         determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).log(x)
 
@@ -1251,6 +1282,7 @@ def log1p(x: Array, /) -> Array:
         an array containing the evaluated result for each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).log1p(x)
 
@@ -1282,6 +1314,7 @@ def log2(x: Array, /) -> Array:
         an array containing the evaluated base ``2`` logarithm for each element
         in ``x``. The returned array must have a floating-point data type
         determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).log2(x)
 
@@ -1313,6 +1346,7 @@ def log10(x: Array, /) -> Array:
         an array containing the evaluated base ``10`` logarithm for each element
         in ``x``. The returned array must have a floating-point data type
         determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).log10(x)
 
@@ -1345,6 +1379,7 @@ def logaddexp(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a floating-point data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).logaddexp(x1, x2)
 
@@ -1376,6 +1411,7 @@ def logical_and(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of `bool`.
+
     """
     return get_namespace(x1, x2).logical_and(x1, x2)
 
@@ -1403,6 +1439,7 @@ def logical_not(x: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x).logical_not(x)
 
@@ -1434,6 +1471,7 @@ def logical_or(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).logical_or(x1, x2)
 
@@ -1465,6 +1503,7 @@ def logical_xor(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).logical_xor(x1, x2)
 
@@ -1523,6 +1562,7 @@ def multiply(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise products. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).multiply(x1, x2)
 
@@ -1548,6 +1588,7 @@ def negative(x: Array, /) -> Array:
         an array containing the evaluated result for each element in ``x``. The
         returned array must have a data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).negative(x)
 
@@ -1571,6 +1612,7 @@ def not_equal(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type of ``bool``.
+
     """
     return get_namespace(x1, x2).not_equal(x1, x2)
 
@@ -1590,6 +1632,7 @@ def positive(x: Array, /) -> Array:
     out: array
         an array containing the evaluated result for each element in ``x``. The
         returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).positive(x)
 
@@ -1677,6 +1720,7 @@ def pow(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise results. The returned array must
         have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).pow(x1, x2)
 
@@ -1765,6 +1809,7 @@ def remainder(x1: Array, x2: Array, /) -> Array:
         an array containing the element-wise results. Each element-wise result
         must have the same sign as the respective element ``x2_i``. The returned
         array must have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).remainder(x1, x2)
 
@@ -1798,6 +1843,7 @@ def round(x: Array, /) -> Array:
     out: array
         an array containing the rounded result for each element in ``x``. The
         returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).round(x)
 
@@ -1823,6 +1869,7 @@ def sign(x: Array, /) -> Array:
     out: array
         an array containing the evaluated result for each element in
         ``x``. The returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).sign(x)
 
@@ -1856,6 +1903,7 @@ def sin(x: Array, /) -> Array:
         an array containing the sine of each element in ``x``. The returned
         array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).sin(x)
 
@@ -1888,6 +1936,7 @@ def sinh(x: Array, /) -> Array:
         an array containing the hyperbolic sine of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).sinh(x)
 
@@ -1907,6 +1956,7 @@ def square(x: Array, /) -> Array:
         an array containing the evaluated result for each element in ``x``. The
         returned array must have a data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).square(x)
 
@@ -1939,6 +1989,7 @@ def sqrt(x: Array, /) -> Array:
         an array containing the square root of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).sqrt(x)
 
@@ -1963,6 +2014,7 @@ def subtract(x1: Array, x2: Array, /) -> Array:
     out: array
         an array containing the element-wise differences. The returned array
         must have a data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).subtract(x1, x2)
 
@@ -1996,6 +2048,7 @@ def tan(x: Array, /) -> Array:
         an array containing the tangent of each element in ``x``. The returned
         array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).tan(x)
 
@@ -2028,6 +2081,7 @@ def tanh(x: Array, /) -> Array:
         an array containing the hyperbolic tangent of each element in ``x``. The
         returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).tanh(x)
 
@@ -2059,6 +2113,7 @@ def trunc(x: Array, /) -> Array:
     out: array
         an array containing the rounded result for each element in ``x``. The
         returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).trunc(x)
 
@@ -2068,225 +2123,169 @@ def trunc(x: Array, /) -> Array:
 
 class HasElementwiseFunctions(Protocol):
     @staticmethod
-    def abs(x: Array, /) -> Array:
-        ...
+    def abs(x: Array, /) -> Array: ...
 
     @staticmethod
-    def acos(x: Array, /) -> Array:
-        ...
+    def acos(x: Array, /) -> Array: ...
 
     @staticmethod
-    def acosh(x: Array, /) -> Array:
-        ...
+    def acosh(x: Array, /) -> Array: ...
 
     @staticmethod
-    def add(x1: Array, x2: Array, /) -> Array:
-        ...
+    def add(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def asin(x: Array, /) -> Array:
-        ...
+    def asin(x: Array, /) -> Array: ...
 
     @staticmethod
-    def asinh(x: Array, /) -> Array:
-        ...
+    def asinh(x: Array, /) -> Array: ...
 
     @staticmethod
-    def atan(x: Array, /) -> Array:
-        ...
+    def atan(x: Array, /) -> Array: ...
 
     @staticmethod
-    def atan2(x1: Array, x2: Array, /) -> Array:
-        ...
+    def atan2(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def atanh(x: Array, /) -> Array:
-        ...
+    def atanh(x: Array, /) -> Array: ...
 
     @staticmethod
-    def bitwise_and(x1: Array, x2: Array, /) -> Array:
-        ...
+    def bitwise_and(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def bitwise_left_shift(x1: Array, x2: Array, /) -> Array:
-        ...
+    def bitwise_left_shift(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def bitwise_invert(x: Array, /) -> Array:
-        ...
+    def bitwise_invert(x: Array, /) -> Array: ...
 
     @staticmethod
-    def bitwise_or(x1: Array, x2: Array, /) -> Array:
-        ...
+    def bitwise_or(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def bitwise_right_shift(x1: Array, x2: Array, /) -> Array:
-        ...
+    def bitwise_right_shift(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def bitwise_xor(x1: Array, x2: Array, /) -> Array:
-        ...
+    def bitwise_xor(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def ceil(x: Array, /) -> Array:
-        ...
+    def ceil(x: Array, /) -> Array: ...
 
     @staticmethod
-    def cos(x: Array, /) -> Array:
-        ...
+    def cos(x: Array, /) -> Array: ...
 
     @staticmethod
-    def cosh(x: Array, /) -> Array:
-        ...
+    def cosh(x: Array, /) -> Array: ...
 
     @staticmethod
-    def divide(x1: Array, x2: Array, /) -> Array:
-        ...
+    def divide(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def equal(x1: Array, x2: Array, /) -> Array:
-        ...
+    def equal(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def exp(x: Array, /) -> Array:
-        ...
+    def exp(x: Array, /) -> Array: ...
 
     @staticmethod
-    def expm1(x: Array, /) -> Array:
-        ...
+    def expm1(x: Array, /) -> Array: ...
 
     @staticmethod
-    def floor(x: Array, /) -> Array:
-        ...
+    def floor(x: Array, /) -> Array: ...
 
     @staticmethod
-    def floor_divide(x1: Array, x2: Array, /) -> Array:
-        ...
+    def floor_divide(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def greater(x1: Array, x2: Array, /) -> Array:
-        ...
+    def greater(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def greater_equal(x1: Array, x2: Array, /) -> Array:
-        ...
+    def greater_equal(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def isfinite(x: Array, /) -> Array:
-        ...
+    def isfinite(x: Array, /) -> Array: ...
 
     @staticmethod
-    def isinf(x: Array, /) -> Array:
-        ...
+    def isinf(x: Array, /) -> Array: ...
 
     @staticmethod
-    def isnan(x: Array, /) -> Array:
-        ...
+    def isnan(x: Array, /) -> Array: ...
 
     @staticmethod
-    def less(x1: Array, x2: Array, /) -> Array:
-        ...
+    def less(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def less_equal(x1: Array, x2: Array, /) -> Array:
-        ...
+    def less_equal(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def log(x: Array, /) -> Array:
-        ...
+    def log(x: Array, /) -> Array: ...
 
     @staticmethod
-    def log1p(x: Array, /) -> Array:
-        ...
+    def log1p(x: Array, /) -> Array: ...
 
     @staticmethod
-    def log2(x: Array, /) -> Array:
-        ...
+    def log2(x: Array, /) -> Array: ...
 
     @staticmethod
-    def log10(x: Array, /) -> Array:
-        ...
+    def log10(x: Array, /) -> Array: ...
 
     @staticmethod
-    def logaddexp(x1: Array, x2: Array, /) -> Array:
-        ...
+    def logaddexp(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def logical_and(x1: Array, x2: Array, /) -> Array:
-        ...
+    def logical_and(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def logical_not(x: Array, /) -> Array:
-        ...
+    def logical_not(x: Array, /) -> Array: ...
 
     @staticmethod
-    def logical_or(x1: Array, x2: Array, /) -> Array:
-        ...
+    def logical_or(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def logical_xor(x1: Array, x2: Array, /) -> Array:
-        ...
+    def logical_xor(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def multiply(x1: Array, x2: Array, /) -> Array:
-        ...
+    def multiply(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def negative(x: Array, /) -> Array:
-        ...
+    def negative(x: Array, /) -> Array: ...
 
     @staticmethod
-    def not_equal(x1: Array, x2: Array, /) -> Array:
-        ...
+    def not_equal(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def positive(x: Array, /) -> Array:
-        ...
+    def positive(x: Array, /) -> Array: ...
 
     @staticmethod
-    def pow(x1: Array, x2: Array, /) -> Array:
-        ...
+    def pow(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def remainder(x1: Array, x2: Array, /) -> Array:
-        ...
+    def remainder(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def round(x: Array, /) -> Array:
-        ...
+    def round(x: Array, /) -> Array: ...
 
     @staticmethod
-    def sign(x: Array, /) -> Array:
-        ...
+    def sign(x: Array, /) -> Array: ...
 
     @staticmethod
-    def sin(x: Array, /) -> Array:
-        ...
+    def sin(x: Array, /) -> Array: ...
 
     @staticmethod
-    def sinh(x: Array, /) -> Array:
-        ...
+    def sinh(x: Array, /) -> Array: ...
 
     @staticmethod
-    def square(x: Array, /) -> Array:
-        ...
+    def square(x: Array, /) -> Array: ...
 
     @staticmethod
-    def sqrt(x: Array, /) -> Array:
-        ...
+    def sqrt(x: Array, /) -> Array: ...
 
     @staticmethod
-    def subtract(x1: Array, x2: Array, /) -> Array:
-        ...
+    def subtract(x1: Array, x2: Array, /) -> Array: ...
 
     @staticmethod
-    def tan(x: Array, /) -> Array:
-        ...
+    def tan(x: Array, /) -> Array: ...
 
     @staticmethod
-    def tanh(x: Array, /) -> Array:
-        ...
+    def tanh(x: Array, /) -> Array: ...
 
     @staticmethod
-    def trunc(x: Array, /) -> Array:
-        ...
+    def trunc(x: Array, /) -> Array: ...

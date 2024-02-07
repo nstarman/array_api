@@ -1,4 +1,5 @@
 """Linear Algebra."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Literal
@@ -70,6 +71,7 @@ def cholesky(x: Array, /, *, upper: bool = False) -> Array:
         matrices. The returned array must have a floating-point data type
         determined by :ref:`type-promotion` and must have the same shape as
         ``x``.
+
     """
     return get_namespace(x).linalg.cholesky(x, upper=upper)
 
@@ -99,6 +101,7 @@ def cross(x1: Array, x2: Array, /, *, axis: int = -1) -> Array:
     out: array
         an array containing the cross products. The returned array must have a
         data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).linalg.cross(x1, x2, axis=axis)
 
@@ -121,6 +124,7 @@ def det(x: Array, /) -> Array:
         the determinant; otherwise, a non-zero dimensional array containing the
         determinant for each square matrix. The returned array must have the
         same data type as ``x``.
+
     """
     return get_namespace(x).linalg.det(x)
 
@@ -150,6 +154,7 @@ def diagonal(x: Array, /, *, offset: int = 0) -> Array:
         removing the last two dimensions and appending a dimension equal to the
         size of the resulting diagonals. The returned array must have the same
         data type as ``x``.
+
     """
     return get_namespace(x).linalg.diagonal(x, offset=offset)
 
@@ -199,6 +204,7 @@ def eigh(x: Array, /) -> tuple[Array]:
 
         Eigenvalue sort order is left unspecified and is thus
         implementation-dependent.
+
     """
     return get_namespace(x).linalg.eigh(x)
 
@@ -235,6 +241,7 @@ def eigvalsh(x: Array, /) -> Array:
 
         Eigenvalue sort order is left unspecified and is thus
         implementation-dependent.
+
     """
     return get_namespace(x).linalg.eigvalsh(x)
 
@@ -256,6 +263,7 @@ def inv(x: Array, /) -> Array:
         an array containing the multiplicative inverses. The returned array must
         have a floating-point data type determined by :ref:`type-promotion` and
         must have the same shape as ``x``.
+
     """
     return get_namespace(x).linalg.inv(x)
 
@@ -334,6 +342,7 @@ def matrix_norm(
         is ``False``, the returned array must have a rank which is two less than
         the rank of ``x``. The returned array must have a floating-point data
         type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).linalg.matrix_norm(x, keepdims=keepdims, ord=ord)
 
@@ -361,6 +370,7 @@ def matrix_power(x: Array, n: int, /) -> Array:
         zero, an array containing the result of raising each square matrix to
         the power ``n``. The returned array must have the same shape as ``x``
         and a floating-point data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).linalg.matrix_power(x, n)
 
@@ -396,6 +406,7 @@ def matrix_rank(x: Array, /, *, rtol: float | Array | None = None) -> Array:
         floating-point data type determined by :ref:`type-promotion` and must
         have shape ``(...)`` (i.e., must have a shape equal to
         ``shape(x)[:-2]``).
+
     """
     return get_namespace(x).linalg.matrix_rank(x, rtol=rtol)
 
@@ -426,6 +437,7 @@ def outer(x1: Array, x2: Array, /) -> Array:
         a two-dimensional array containing the outer product and whose shape is
         ``(N, M)``. The returned array must have a data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).linalg.outer(x1, x2)
 
@@ -461,6 +473,7 @@ def pinv(x: Array, /, *, rtol: float | Array | None = None) -> Array:
         floating-point data type determined by :ref:`type-promotion` and must
         have shape ``(..., N, M)`` (i.e., must have the same shape as ``x``,
         except the innermost two dimensions must be transposed).
+
     """
     return get_namespace(x).linalg.pinv(x, rtol=rtol)
 
@@ -521,6 +534,7 @@ def qr(
 
         Each returned array must have a floating-point data type determined by
         :ref:`type-promotion`.
+
     """
     return get_namespace(x).linalg.qr(x, mode=mode)
 
@@ -567,6 +581,7 @@ def slogdet(x: Array, /) -> tuple[Array, Array]:
             cases, the determinant should be equal to ``sign * exp(logsabsdet)``
             (although, again, the result may be subject to numerical precision
             errors).
+
     """
     return get_namespace(x).linalg.slogdet(x)
 
@@ -603,6 +618,7 @@ def solve(x1: Array, x2: Array, /) -> Array:
         square matrix. The returned array must have the same shape as ``x2``
         (i.e., the array corresponding to ``B``) and must have a floating-point
         data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x1, x2).linalg.solve(x1, x2)
 
@@ -661,6 +677,7 @@ def svd(
 
         Each returned array must have the same floating-point data type as
         ``x``.
+
     """
     return get_namespace(x).linalg.svd(x, full_matrices=full_matrices)
 
@@ -686,6 +703,7 @@ def svdvals(x: Array, /) -> Array:
         largest value, et cetera. The first ``x.ndim-2`` dimensions must have
         the same shape as those of the input ``x``. The returned array must have
         the same floating-point data type as ``x``.
+
     """
     return get_namespace(x).linalg.svdvals(x)
 
@@ -734,6 +752,7 @@ def trace(x: Array, /, *, offset: int = 0) -> Array:
             out[i, j, k, ..., l] = trace(a[i, j, k, ..., l, :, :])
 
         The returned array must have the same data type as ``x``.
+
     """
     return get_namespace(x).linalg.trace(x, offset=offset)
 
@@ -816,6 +835,7 @@ def vector_norm(
         ``axis`` is a ``n``-tuple, the returned array must have a rank which is
         ``n`` less than the rank of ``x``. The returned array must have a
         floating-point data type determined by :ref:`type-promotion`.
+
     """
     return get_namespace(x).linalg.vector_norm(
         x,

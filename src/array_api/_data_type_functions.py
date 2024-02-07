@@ -55,6 +55,7 @@ def astype(x: Array, dtype: DType, /, *, copy: bool = True) -> Array:
     out: array
         an array having the specified data type. The returned array must have
         the same shape as ``x``.
+
     """
     return get_namespace(x).astype(x, dtype, copy=copy)
 
@@ -74,6 +75,7 @@ def broadcast_arrays(*arrays: Array) -> list[Array]:
         a list of broadcasted arrays. Each array must have the same shape.
         Each array must have the same dtype as its corresponding input
         array.
+
     """
     return get_namespace(*arrays).broadcast_arrays(*arrays)
 
@@ -96,6 +98,7 @@ def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array:
     out: array
         an array having a specified shape. Must have the same data type as
         ``x``.
+
     """
     return get_namespace(x).broadcast_to(x, shape=shape)
 
@@ -105,29 +108,22 @@ def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array:
 
 class HasDataTypeFunctions(Protocol):
     @staticmethod
-    def astype(x: Array, dtype: DType, /, *, copy: bool = True) -> Array:
-        ...
+    def astype(x: Array, dtype: DType, /, *, copy: bool = True) -> Array: ...
 
     @staticmethod
-    def broadcast_arrays(*arrays: Array) -> list[Array]:
-        ...
+    def broadcast_arrays(*arrays: Array) -> list[Array]: ...
 
     @staticmethod
-    def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array:
-        ...
+    def broadcast_to(x: Array, /, shape: tuple[int, ...]) -> Array: ...
 
     @staticmethod
-    def can_cast(from_: DType | Array, to: DType, /) -> bool:
-        ...
+    def can_cast(from_: DType | Array, to: DType, /) -> bool: ...
 
     @staticmethod
-    def finfo(type: DType | Array, /) -> finfo_object:
-        ...
+    def finfo(type: DType | Array, /) -> finfo_object: ...
 
     @staticmethod
-    def iinfo(type: DType | Array, /) -> iinfo_object:
-        ...
+    def iinfo(type: DType | Array, /) -> iinfo_object: ...
 
     @staticmethod
-    def result_type(*arrays_and_dtypes: Array | DType) -> DType:
-        ...
+    def result_type(*arrays_and_dtypes: Array | DType) -> DType: ...
